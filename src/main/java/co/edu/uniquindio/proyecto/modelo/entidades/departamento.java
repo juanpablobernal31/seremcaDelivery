@@ -1,11 +1,10 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,7 +17,12 @@ public class departamento implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     private int idDepartamento;
+
+    @Column(nullable = false)
     private String nombreDepartamento;
+
+    @OneToMany(mappedBy = "idDepartMunicipio")
+    private List<municipio> municipios;
 
 
 }

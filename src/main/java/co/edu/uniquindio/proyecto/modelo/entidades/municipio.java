@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,9 +20,17 @@ public class municipio implements Serializable {
     private int idMunicipio;
 
 
-    private  int idDepartamentoMunicipio;
-
     @Column(nullable = false)
     private String nombremunicipio;
+
+
+    @ManyToOne
+    private departamento idDepartMunicipio;
+
+    @OneToMany(mappedBy = "idMunicipioPv")
+    private List<puntoVenta> municipioPuntoVenta;
+
+    @OneToMany(mappedBy = "idMunicipioProv")
+    private List<proveedor> municipioProveedor;
 
 }

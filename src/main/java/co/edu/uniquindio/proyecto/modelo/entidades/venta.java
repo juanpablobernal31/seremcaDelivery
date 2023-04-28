@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +21,8 @@ public class venta implements Serializable {
     @EqualsAndHashCode.Include
     private int idVenta;
 
-    @Column(nullable = false)
-    private int idClienteVenta;
-
+    @ManyToOne
+    private persona idPersonaVenta;
 
     private LocalDateTime fechaVenta;
 
@@ -34,5 +34,9 @@ public class venta implements Serializable {
     @PositiveOrZero
     private float imuestoVenta;
 
+
+
+    @OneToMany(mappedBy = "idVentaDetalleVenta")
+    private List<detalleVenta> detalleVentaList;
 
 }

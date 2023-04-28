@@ -5,6 +5,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,5 +32,11 @@ public class puntoVenta implements Serializable {
 
     @Column(nullable = false)
     private String nombrePuntoVenta;
+
+    @ManyToOne
+    private municipio idMunicipioPv;
+
+    @OneToMany(mappedBy = "idPuntoOrigenEnvio")
+    private List<envio> puntoVentaEnvios;
 
 }

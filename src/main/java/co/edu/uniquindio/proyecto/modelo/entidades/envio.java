@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,18 +23,17 @@ public class envio implements Serializable {
     @Column(nullable = false)
     private String direccionEnvio;
 
-    @Column(nullable = false)
-    private int idPuntoVentaOrigen;
+    @ManyToOne
+    private puntoVenta idPuntoOrigenEnvio;
 
     @Column(nullable = false)
     private int idVentaEnvio;
 
-    @Column(nullable = false)
-    private int idClienteEnvio;
+    @ManyToOne
+    private persona idPersonaEnvio;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private estado idEstadoEnvio;
+    @ManyToOne
+    private estado estadosEnvio;
 
     @Column(nullable = true)
     private String telefonoEnvio;

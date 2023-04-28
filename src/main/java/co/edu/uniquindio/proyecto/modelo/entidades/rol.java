@@ -1,7 +1,26 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
 
-public enum rol{
+import jakarta.persistence.*;
+import lombok.*;
 
-    ADMINISTRADOR,
-    CLIENTE
+import java.io.Serializable;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+public class rol{
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private int idRol;
+
+    @Column(nullable = false)
+    private String nombreRol;
+
+    @OneToMany(mappedBy = "rolPersona")
+    private List<persona> personas;
 }

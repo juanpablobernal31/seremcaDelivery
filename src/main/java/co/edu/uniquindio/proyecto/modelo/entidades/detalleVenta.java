@@ -18,12 +18,14 @@ public class detalleVenta implements Serializable {
     @EqualsAndHashCode.Include
     private int idDetalleVenta;
 
-    @Column(nullable = false)
-    @PositiveOrZero
-    private int idVentaDetalleVenta;
 
-    @Column(nullable = false)
-    private int idProductoVenta;
+    @ManyToOne
+    private venta idVentaDetalleVenta;
+
+
+    @ManyToOne
+    private producto idProductoDetalleVenta;
+
 
     @PositiveOrZero
     private int precioTotal;

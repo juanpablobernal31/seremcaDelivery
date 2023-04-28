@@ -5,6 +5,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,11 +22,6 @@ public class proveedor implements Serializable {
 
     @Column(nullable = false)
     private int epartamentoProveedor;
-
-
-    @Column(nullable = false)
-    @PositiveOrZero
-    private int municipioProveedor;
 
 
     @PositiveOrZero
@@ -47,5 +44,11 @@ public class proveedor implements Serializable {
 
     @Column(nullable = false)
     private String cedulaNit;
+
+    @ManyToOne
+    private municipio idMunicipioProv;
+
+    @OneToMany(mappedBy = "idProveProducto")
+    private List<producto> productoProveedorList;
 
 }

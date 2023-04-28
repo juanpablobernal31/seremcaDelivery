@@ -4,6 +4,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,6 +32,10 @@ public class categoria implements Serializable {
     @Column(nullable = false)
     @PositiveOrZero
     private String unidadMedida;
+
+
+    @OneToMany(mappedBy = "idCatProducto")
+    private List<producto> productoCategoriaList;
 
 
 }

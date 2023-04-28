@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class persona implements Serializable {
     @EqualsAndHashCode.Include
     private int idPersona;
 
-    @Enumerated(EnumType.STRING)
-    private rol idRolPersona;
+    @ManyToOne
+    private rol rolPersona;
 
     @Column(nullable = false)
     private String nombrePersona;
@@ -36,4 +38,10 @@ public class persona implements Serializable {
 
     @Column(nullable = false)
     private String contraseña;
+
+    @OneToMany(mappedBy = "idPersonaEnvio")
+    private List<envio> envios;
+
+    @OneToMany(mappedBy = "idPersonaVenta")
+    private List<venta> ventas;
 }

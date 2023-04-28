@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -23,8 +24,6 @@ public class producto implements Serializable {
     @EqualsAndHashCode.Include
     private int idProducto;
 
-    @Column(nullable = false)
-    private int idCategoriaProducto;
 
     @Column(nullable = false)
     private int idProveerdorProducto;
@@ -52,5 +51,15 @@ public class producto implements Serializable {
 
     @Column(nullable = false)
     private LocalDate fechaMaduracion;
+
+
+    @ManyToOne
+    private proveedor idProveProducto;
+
+    @ManyToOne
+    private categoria idCatProducto;
+
+    @OneToMany(mappedBy = "idProductoDetalleVenta")
+    private List<detalleVenta> productoDetaVentaList;
 
 }
