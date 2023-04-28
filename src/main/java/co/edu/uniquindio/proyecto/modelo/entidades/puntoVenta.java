@@ -18,8 +18,8 @@ public class puntoVenta implements Serializable {
     @EqualsAndHashCode.Include
     private int idPuntoVenta;
 
-    @Enumerated(EnumType.STRING)
-    private departamento departametoPV;
+    @Column(nullable = false)
+    private int idDepartametoPV;
 
     @Column(nullable = false)
     @PositiveOrZero

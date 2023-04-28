@@ -1,38 +1,24 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
-public enum departamento {
-    AMAZONAS,
-    ANTIOQUIA,
-    ARAUCA,
-    ATLANTICO,
-    BOGOTA,
-    BOLIVAR,
-    BOYACA,
-    CALDAS,
-    CAQUETA,
-    CASANARE,
-    CAUCA,
-    CESAR,
-    CHOCO,
-    CORDOBA,
-    CUNDINAMARCA,
-    GUAINIA,
-    GUAVUARE,
-    HUILA,
-    LA_GUAJIRA,
-    MAGDALENA,
-    META,
-    NARIÑO,
-    NORTE_DE_SANTANDER,
-    PUTUMAYO,
-    QUINDIO,
-    RISARALDA,
-    SAN_ANDRES_Y_PROVIDENCIA,
-    SANTANDER,
-    SUCRE,
-    TOLIMA,
-    VALLE_DEL_CAUCA,
-    VAUPES,
-    VICHADA
+import java.io.Serializable;
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+public class departamento implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @EqualsAndHashCode.Include
+    private int idDepartamento;
+    private String nombreDepartamento;
+
 
 }

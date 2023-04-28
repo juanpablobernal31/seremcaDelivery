@@ -17,8 +17,8 @@ public class municipio implements Serializable {
     @EqualsAndHashCode.Include
     private int idMunicipio;
 
-    @Enumerated(EnumType.STRING)
-    private departamento departamentoMunicipio;
+
+    private  int idDepartamentoMunicipio;
 
     @Column(nullable = false)
     private String nombremunicipio;

@@ -19,9 +19,7 @@ public class proveedor implements Serializable {
     private int idProveedor;
 
     @Column(nullable = false)
-
-    @Enumerated(EnumType.STRING)
-    private departamento departamentoProveedor;
+    private int epartamentoProveedor;
 
 
     @Column(nullable = false)
