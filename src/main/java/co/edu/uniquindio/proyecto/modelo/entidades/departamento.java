@@ -1,0 +1,38 @@
+package co.edu.uniquindio.proyecto.modelo.entidades;
+
+public enum departamento {
+    AMAZONAS,
+    ANTIOQUIA,
+    ARAUCA,
+    ATLANTICO,
+    BOGOTA,
+    BOLIVAR,
+    BOYACA,
+    CALDAS,
+    CAQUETA,
+    CASANARE,
+    CAUCA,
+    CESAR,
+    CHOCO,
+    CORDOBA,
+    CUNDINAMARCA,
+    GUAINIA,
+    GUAVUARE,
+    HUILA,
+    LA_GUAJIRA,
+    MAGDALENA,
+    META,
+    NARIÑO,
+    NORTE_DE_SANTANDER,
+    PUTUMAYO,
+    QUINDIO,
+    RISARALDA,
+    SAN_ANDRES_Y_PROVIDENCIA,
+    SANTANDER,
+    SUCRE,
+    TOLIMA,
+    VALLE_DEL_CAUCA,
+    VAUPES,
+    VICHADA
+
+}
