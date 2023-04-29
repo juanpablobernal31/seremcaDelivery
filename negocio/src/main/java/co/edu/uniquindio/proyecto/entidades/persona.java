@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class persona implements Serializable {
@@ -37,11 +37,25 @@ public class persona implements Serializable {
     private String telefonoPersona;
 
     @Column(nullable = false)
-    private String contraseña;
+    private String contrasena;
 
     @OneToMany(mappedBy = "idPersonaEnvio")
+    @ToString.Exclude // --> agregar esta sentencia a todos los MANY_TO_ONE
     private List<envio> envios;
 
     @OneToMany(mappedBy = "idPersonaVenta")
+    @ToString.Exclude // --> agregar esta sentencia a todos los MANY_TO_ONE
     private List<venta> ventas;
+
+
+    @Builder
+    public persona(int idPersona, rol rolPersona, String nombrePersona, String direccionPersona, String ciudadPersona, String telefonoPersona, String contrasena) {
+        this.idPersona = idPersona;
+        this.rolPersona = rolPersona;
+        this.nombrePersona = nombrePersona;
+        this.direccionPersona = direccionPersona;
+        this.ciudadPersona = ciudadPersona;
+        this.telefonoPersona = telefonoPersona;
+        this.contrasena = contrasena;
+    }
 }

@@ -1,11 +1,11 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -41,4 +41,15 @@ public class envio implements Serializable {
 
     private LocalDate fechaEnvio;
 
+
+    @Builder
+    public envio(String direccionEnvio, puntoVenta idPuntoOrigenEnvio, int idVentaEnvio, persona idPersonaEnvio, estado estadosEnvio, String telefonoEnvio, LocalDate fechaEnvio) {
+        this.direccionEnvio = direccionEnvio;
+        this.idPuntoOrigenEnvio = idPuntoOrigenEnvio;
+        this.idVentaEnvio = idVentaEnvio;
+        this.idPersonaEnvio = idPersonaEnvio;
+        this.estadosEnvio = estadosEnvio;
+        this.telefonoEnvio = telefonoEnvio;
+        this.fechaEnvio = LocalDate.now();
+    }
 }

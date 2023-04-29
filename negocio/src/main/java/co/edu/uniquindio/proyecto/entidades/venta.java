@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -32,11 +32,16 @@ public class venta implements Serializable {
 
     @Column(nullable = false)
     @PositiveOrZero
-    private float imuestoVenta;
-
-
+    private float impuestoVenta;
 
     @OneToMany(mappedBy = "idVentaDetalleVenta")
     private List<detalleVenta> detalleVentaList;
 
+    @Builder
+    public venta(persona idPersonaVenta, LocalDateTime fechaVenta, float precioVenta, float impuestoVenta) {
+        this.idPersonaVenta = idPersonaVenta;
+        this.fechaVenta = LocalDateTime.now();
+        this.precioVenta = precioVenta;
+        this.impuestoVenta = impuestoVenta;
+    }
 }

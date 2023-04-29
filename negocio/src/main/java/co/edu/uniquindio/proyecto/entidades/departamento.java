@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +24,12 @@ public class departamento implements Serializable {
     @OneToMany(mappedBy = "idDepartMunicipio")
     private List<municipio> municipios;
 
+    @OneToMany(mappedBy = "departamentoProveedor")
+    private List<proveedor> proveedores;
 
+
+    @Builder
+    public departamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
+    }
 }

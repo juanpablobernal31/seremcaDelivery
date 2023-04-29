@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -35,4 +35,14 @@ public class detalleVenta implements Serializable {
 
     @PositiveOrZero
     private int cantidadProducto;
+
+
+    @Builder
+    public detalleVenta(venta idVentaDetalleVenta, producto idProductoDetalleVenta, int precioTotal, int descuentos, int cantidadProducto) {
+        this.idVentaDetalleVenta = idVentaDetalleVenta;
+        this.idProductoDetalleVenta = idProductoDetalleVenta;
+        this.precioTotal = precioTotal;
+        this.descuentos = descuentos;
+        this.cantidadProducto = cantidadProducto;
+    }
 }

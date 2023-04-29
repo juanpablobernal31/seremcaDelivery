@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -39,4 +39,13 @@ public class puntoVenta implements Serializable {
     @OneToMany(mappedBy = "idPuntoOrigenEnvio")
     private List<envio> puntoVentaEnvios;
 
+
+    @Builder
+    public puntoVenta(int idDepartametoPV, int municipioPV, int capacidadAlmacenamiento, String nombrePuntoVenta, municipio idMunicipioPv) {
+        this.idDepartametoPV = idDepartametoPV;
+        this.municipioPV = municipioPV;
+        this.capacidadAlmacenamiento = capacidadAlmacenamiento;
+        this.nombrePuntoVenta = nombrePuntoVenta;
+        this.idMunicipioPv = idMunicipioPv;
+    }
 }

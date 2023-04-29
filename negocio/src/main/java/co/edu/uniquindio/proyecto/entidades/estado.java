@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,4 +27,11 @@ public class estado implements Serializable {
 
     @OneToMany(mappedBy = "estadosEnvio")
     private List<envio> envioEstado;
+
+
+    @Builder
+    public estado(String nombreEstado, String descripEstado) {
+        this.nombreEstado = nombreEstado;
+        this.descripEstado = descripEstado;
+    }
 }

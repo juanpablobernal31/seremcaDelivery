@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
@@ -38,4 +38,11 @@ public class categoria implements Serializable {
     private List<producto> productoCategoriaList;
 
 
+    @Builder
+    public categoria(String nombreCategoria, String descripcionCategoria, int diasMaduracion, String unidadMedida) {
+        this.nombreCategoria = nombreCategoria;
+        this.descripcionCategoria = descripcionCategoria;
+        this.diasMaduracion = diasMaduracion;
+        this.unidadMedida = unidadMedida;
+    }
 }

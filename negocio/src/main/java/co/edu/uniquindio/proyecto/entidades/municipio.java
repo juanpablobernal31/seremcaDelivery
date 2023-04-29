@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,4 +33,10 @@ public class municipio implements Serializable {
     @OneToMany(mappedBy = "idMunicipioProv")
     private List<proveedor> municipioProveedor;
 
+
+    @Builder
+    public municipio(String nombremunicipio, departamento idDepartMunicipio) {
+        this.nombremunicipio = nombremunicipio;
+        this.idDepartMunicipio = idDepartMunicipio;
+    }
 }

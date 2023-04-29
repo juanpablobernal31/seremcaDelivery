@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -20,9 +20,6 @@ public class proveedor implements Serializable {
     @EqualsAndHashCode.Include
     private int idProveedor;
 
-    @Column(nullable = false)
-    private int epartamentoProveedor;
-
 
     @PositiveOrZero
     private int promedioProveedor;
@@ -33,8 +30,9 @@ public class proveedor implements Serializable {
     @PositiveOrZero
     private int numeroCosecha;
 
-    @PositiveOrZero
-    private int esAsociacion;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 100)
+    private esAsociacion esAsociacion;
 
     @PositiveOrZero
     private int nivelMar;
@@ -48,7 +46,24 @@ public class proveedor implements Serializable {
     @ManyToOne
     private municipio idMunicipioProv;
 
+    @ManyToOne
+    private departamento departamentoProveedor;
+
     @OneToMany(mappedBy = "idProveProducto")
     private List<producto> productoProveedorList;
 
+
+
+    @Builder
+    public proveedor(int promedioProveedor, int ultimaCosecha, int numeroCosecha, co.edu.uniquindio.proyecto.entidades.esAsociacion esAsociacion, int nivelMar, String nombreProveedor, String cedulaNit, municipio idMunicipioProv, departamento departamentoProveedor) {
+        this.promedioProveedor = promedioProveedor;
+        this.ultimaCosecha = ultimaCosecha;
+        this.numeroCosecha = numeroCosecha;
+        this.esAsociacion = esAsociacion;
+        this.nivelMar = nivelMar;
+        this.nombreProveedor = nombreProveedor;
+        this.cedulaNit = cedulaNit;
+        this.idMunicipioProv = idMunicipioProv;
+        this.departamentoProveedor = departamentoProveedor;
+    }
 }

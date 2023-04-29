@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class rol{
+public class rol implements  Serializable{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -23,4 +23,10 @@ public class rol{
 
     @OneToMany(mappedBy = "rolPersona")
     private List<persona> personas;
+
+
+    @Builder
+    public rol(String nombreRol) {
+        this.nombreRol = nombreRol;
+    }
 }

@@ -1,7 +1,6 @@
-package co.edu.uniquindio.proyecto.modelo.entidades;
+package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
@@ -62,4 +61,18 @@ public class producto implements Serializable {
     @OneToMany(mappedBy = "idProductoDetalleVenta")
     private List<detalleVenta> productoDetaVentaList;
 
+    @Builder
+    public producto(int idProveerdorProducto, int cantidadProducto, int disponible, float precioProduccion, float precioVentaProducto, String nombreProducto, String descripcionProducto, LocalDate fechaCosecha, LocalDate fechaMaduracion, proveedor idProveProducto, categoria idCatProducto) {
+        this.idProveerdorProducto = idProveerdorProducto;
+        this.cantidadProducto = cantidadProducto;
+        this.disponible = disponible;
+        this.precioProduccion = precioProduccion;
+        this.precioVentaProducto = precioVentaProducto;
+        this.nombreProducto = nombreProducto;
+        this.descripcionProducto = descripcionProducto;
+        this.fechaCosecha = fechaCosecha;
+        this.fechaMaduracion = fechaMaduracion;
+        this.idProveProducto = idProveProducto;
+        this.idCatProducto = idCatProducto;
+    }
 }
