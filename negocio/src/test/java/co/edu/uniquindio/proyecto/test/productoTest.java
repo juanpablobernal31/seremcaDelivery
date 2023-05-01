@@ -51,4 +51,45 @@ public class productoTest {
         lista.forEach(System.out::println);
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosBycantidad(){
+        List<producto> productos = productoRepo.productosBycantidad(100);
+        productos.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosDisponibles(){
+        List<producto> productos = productoRepo.productosBydisponibes(60);
+        productos.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosPrecio(){
+        List<producto> productos = productoRepo.findproductosByPrecioVentaProducto(10000);
+        productos.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosnombre(){
+        producto producto = productoRepo.findByNombreProducto("pulpa de mora");
+        System.out.println(producto.toString());
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosFechaCosecha(){
+        List<producto> productos = productoRepo.findByFechaCosecha("09/04/2023");
+        productos.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosFechaMaduracion(){
+        List<producto> productos = productoRepo.findByFechaMaduracion("15/04/2023");
+        productos.forEach(System.out::println);
+    }
 }

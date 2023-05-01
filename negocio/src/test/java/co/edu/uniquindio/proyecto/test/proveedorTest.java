@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto.test;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repo.proveedorRepo;
+import co.edu.uniquindio.proyecto.repo.departamentoRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class proveedorTest {
     @Autowired
     private proveedorRepo proveedorRepo;
 
+    @Autowired departamentoRepo departamentoRepo;
 
     @Test
     public void generarProveedor(){
@@ -51,5 +53,26 @@ public class proveedorTest {
     public void listarProveedores(){
         List<proveedor> lista = proveedorRepo.findAll();
         lista.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void departamentoProveedor(){
+        departamento departamento;
+        departamento = departamentoRepo.findById(1).orElse(null);
+        proveedor proveedores = proveedorRepo.findByDepartamentoProveedor(departamento);
+
+        System.out.println(proveedores.toString());
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public  void    listarDepartamentoProveedor(){
+        departamento departamento;
+        departamento = departamentoRepo.findById(4).orElse(null);
+
+        List<proveedor> proveedors = proveedorRepo.findByDepartamentoProveedores(departamento);
+
+        proveedors.forEach(System.out::println);
     }
 }

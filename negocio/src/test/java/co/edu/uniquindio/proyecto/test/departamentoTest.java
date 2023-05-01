@@ -54,4 +54,11 @@ public class departamentoTest {
         //Imprimimos la lista
         lista.forEach(System.out::println);
     }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosFecahCosecha(){
+        departamento departamento = departamentoRepo.findByNombreDepartamento("Quindio");
+        System.out.println(departamento.toString());
+    }
 }

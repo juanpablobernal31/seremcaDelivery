@@ -54,4 +54,25 @@ public class categoriaTest {
         lista.forEach(System.out::println);
     }
 
+     @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerPordiasMaduracion(){
+        categoria categoria = categoriaRepo.obtener(6);
+         System.out.println(categoria);
+     }
+     @Test
+    @Sql("classpath:dataset.sql")
+    public void listarPorDiasMaduaracion(){
+        List<categoria> lista = categoriaRepo.listarDiasMaduracion(6);
+        lista.forEach(System.out::println);
+     }
+
+     @Test
+    @Sql("classpath:dataset.sql")
+    public void nombreCategoria(){
+        categoria categoria = categoriaRepo.countcategoriaBynombreCategoria("Rama");
+         System.out.println(categoria.toString());
+        Assertions.assertEquals("rama", categoria.getNombreCategoria());
+     }
+
 }

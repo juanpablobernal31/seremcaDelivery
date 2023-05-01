@@ -67,4 +67,13 @@ public class personaTest {
         //Imprimimos la lista
         lista.forEach(System.out::println);
     }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void autenticacion(){
+        persona persona = personaRepo.personaAutenticada("12345", 1);
+        System.out.println(persona.toString());
+
+        Assertions.assertNotNull(persona);
+    }
 }

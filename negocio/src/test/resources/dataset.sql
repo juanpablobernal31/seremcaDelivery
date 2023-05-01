@@ -13,7 +13,7 @@ insert into municipio values (1, "Calarca", 1);
 insert into municipio values (2, "Manizales", 2);
 insert into municipio values (3, "Pereira", 3);
 insert into municipio values (4, "Neiva", 4);
-insert into municipio values (5, "Calarca", 4);
+insert into municipio values (5, "gigante", 4);
 insert into municipio values (6, "Armenia", 1);
 
 
@@ -23,12 +23,12 @@ insert into  proveedor values (3, "12", "SI", 1600, "cofiMoras", 1, 1100, 1100, 
 
 
 insert into categoria values (1, "canastilla de mora", 6, "arreglada", "kilos");
-insert into categoria values (2, "mora sin clasificar", 4, "rama", "kilos");
+insert into categoria values (2, "mora sin clasificar", 6, "rama", "kilos");
 insert into categoria values (3, "mora en proceso de refirgeracion", 20, "refirgerada", "kilos");
 insert into categoria values (4, "pulpa de mora", 15, "pulpa", "kilos");
 
 insert into producto values (1, 100, "mora en canastillas tipo arreglada", 100, '09/04/2023', '15/04/2023', "canastilla de mora arreglada", 6000, 10000, 1, 1);
-insert into producto values (2, 100, "mora en canastillas tipo rama", 80, '09/04/2023', '13/04/2023', "canastilla de mora rama", 5000, 10000, 2, 1);
+insert into producto values (2, 100, "mora en canastillas tipo rama", 60, '09/04/2023', '13/04/2023', "canastilla de mora rama", 5000, 10000, 2, 1);
 insert into producto values (3, 60, "mora en pulpa", 60, '10/04/2023', '25/04/2023', "pulpa de mora", 7000, 15000, 3, 1);
 
 
@@ -38,7 +38,7 @@ insert into producto values (3, 60, "mora en pulpa", 60, '10/04/2023', '25/04/20
 insert into  punto_venta values (1, 5000, "donMora", 1, 1);
 insert into  punto_venta values (2, 4500, "donMorita", 2, 2);
 insert into  punto_venta values (3, 5000, "donMorales", 1, 1);
-insert into  punto_venta values (4, 50000, "sermca", 4, 3);
+insert into  punto_venta values (4, 5000, "seremca", 4, 3);
 
 
 insert into  venta values (1, '12/04/2023', 60000, 1);
