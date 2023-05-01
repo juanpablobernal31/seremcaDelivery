@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface puntoVentaRepo extends JpaRepository<puntoVenta, Integer> {
+public interface puntoVentaRepo extends JpaRepository<puntoVenta, Integer> {
 }

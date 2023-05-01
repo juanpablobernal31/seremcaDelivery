@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class persona implements Serializable {
@@ -21,8 +21,8 @@ public class persona implements Serializable {
     @EqualsAndHashCode.Include
     private int idPersona;
 
-    @ManyToOne
-    private rol rolPersona;
+    @Column(nullable = false)
+    private int rolPersona;
 
     @Column(nullable = false)
     private String nombrePersona;
@@ -49,7 +49,7 @@ public class persona implements Serializable {
 
 
     @Builder
-    public persona(int idPersona, rol rolPersona, String nombrePersona, String direccionPersona, String ciudadPersona, String telefonoPersona, String contrasena) {
+    public persona(int idPersona, int rolPersona, String nombrePersona, String direccionPersona, String ciudadPersona, String telefonoPersona, String contrasena) {
         this.idPersona = idPersona;
         this.rolPersona = rolPersona;
         this.nombrePersona = nombrePersona;

@@ -28,7 +28,7 @@ public class detalleVenta implements Serializable {
 
 
     @PositiveOrZero
-    private int precioTotal;
+    private float precioTotal;
 
     @PositiveOrZero
     private int descuentos;
@@ -38,7 +38,7 @@ public class detalleVenta implements Serializable {
 
 
     @Builder
-    public detalleVenta(venta idVentaDetalleVenta, producto idProductoDetalleVenta, int precioTotal, int descuentos, int cantidadProducto) {
+    public detalleVenta(venta idVentaDetalleVenta, producto idProductoDetalleVenta, float precioTotal, int descuentos, int cantidadProducto) {
         this.idVentaDetalleVenta = idVentaDetalleVenta;
         this.idProductoDetalleVenta = idProductoDetalleVenta;
         this.precioTotal = precioTotal;

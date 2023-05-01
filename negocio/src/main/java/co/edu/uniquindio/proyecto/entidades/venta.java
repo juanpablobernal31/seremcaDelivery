@@ -5,7 +5,9 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Getter
@@ -24,24 +26,22 @@ public class venta implements Serializable {
     @ManyToOne
     private persona idPersonaVenta;
 
-    private LocalDateTime fechaVenta;
+    @Column(nullable = false)
+    private String fechaVenta;
 
     @Column(nullable = false)
     @PositiveOrZero
     private float precioVenta;
 
-    @Column(nullable = false)
-    @PositiveOrZero
-    private float impuestoVenta;
 
     @OneToMany(mappedBy = "idVentaDetalleVenta")
+    @ToString.Exclude
     private List<detalleVenta> detalleVentaList;
 
     @Builder
-    public venta(persona idPersonaVenta, LocalDateTime fechaVenta, float precioVenta, float impuestoVenta) {
+    public venta(persona idPersonaVenta, String fechaVenta, float precioVenta) {
         this.idPersonaVenta = idPersonaVenta;
-        this.fechaVenta = LocalDateTime.now();
+        this.fechaVenta = fechaVenta;
         this.precioVenta = precioVenta;
-        this.impuestoVenta = impuestoVenta;
     }
 }

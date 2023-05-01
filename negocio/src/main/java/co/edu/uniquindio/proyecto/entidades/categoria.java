@@ -30,11 +30,11 @@ public class categoria implements Serializable {
     private int diasMaduracion;
 
     @Column(nullable = false)
-    @PositiveOrZero
     private String unidadMedida;
 
 
     @OneToMany(mappedBy = "idCatProducto")
+    @ToString.Exclude
     private List<producto> productoCategoriaList;
 
 

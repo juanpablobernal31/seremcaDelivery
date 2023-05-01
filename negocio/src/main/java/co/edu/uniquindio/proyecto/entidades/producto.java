@@ -24,9 +24,6 @@ public class producto implements Serializable {
     private int idProducto;
 
 
-    @Column(nullable = false)
-    private int idProveerdorProducto;
-
     @PositiveOrZero
     private int cantidadProducto;
 
@@ -46,10 +43,10 @@ public class producto implements Serializable {
     private String descripcionProducto;
 
     @Column(nullable = false)
-    private LocalDate fechaCosecha;
+    private String fechaCosecha;
 
     @Column(nullable = false)
-    private LocalDate fechaMaduracion;
+    private String fechaMaduracion;
 
 
     @ManyToOne
@@ -59,11 +56,12 @@ public class producto implements Serializable {
     private categoria idCatProducto;
 
     @OneToMany(mappedBy = "idProductoDetalleVenta")
+    @ToString.Exclude
     private List<detalleVenta> productoDetaVentaList;
 
     @Builder
-    public producto(int idProveerdorProducto, int cantidadProducto, int disponible, float precioProduccion, float precioVentaProducto, String nombreProducto, String descripcionProducto, LocalDate fechaCosecha, LocalDate fechaMaduracion, proveedor idProveProducto, categoria idCatProducto) {
-        this.idProveerdorProducto = idProveerdorProducto;
+    public producto( int cantidadProducto, int disponible, float precioProduccion, float precioVentaProducto, String nombreProducto, String descripcionProducto, String fechaCosecha, String fechaMaduracion, proveedor idProveProducto, categoria idCatProducto) {
+
         this.cantidadProducto = cantidadProducto;
         this.disponible = disponible;
         this.precioProduccion = precioProduccion;

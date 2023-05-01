@@ -20,12 +20,6 @@ public class puntoVenta implements Serializable {
     @EqualsAndHashCode.Include
     private int idPuntoVenta;
 
-    @Column(nullable = false)
-    private int idDepartametoPV;
-
-    @Column(nullable = false)
-    @PositiveOrZero
-    private int municipioPV;
 
     @PositiveOrZero
     private int capacidadAlmacenamiento;
@@ -36,14 +30,17 @@ public class puntoVenta implements Serializable {
     @ManyToOne
     private municipio idMunicipioPv;
 
+    @ManyToOne
+    private departamento idDepartametoPV;
+
     @OneToMany(mappedBy = "idPuntoOrigenEnvio")
+    @ToString.Exclude
     private List<envio> puntoVentaEnvios;
 
 
     @Builder
-    public puntoVenta(int idDepartametoPV, int municipioPV, int capacidadAlmacenamiento, String nombrePuntoVenta, municipio idMunicipioPv) {
+    public puntoVenta(departamento idDepartametoPV, int capacidadAlmacenamiento, String nombrePuntoVenta, municipio idMunicipioPv) {
         this.idDepartametoPV = idDepartametoPV;
-        this.municipioPV = municipioPV;
         this.capacidadAlmacenamiento = capacidadAlmacenamiento;
         this.nombrePuntoVenta = nombrePuntoVenta;
         this.idMunicipioPv = idMunicipioPv;

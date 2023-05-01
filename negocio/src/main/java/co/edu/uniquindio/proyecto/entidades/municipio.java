@@ -28,9 +28,11 @@ public class municipio implements Serializable {
     private departamento idDepartMunicipio;
 
     @OneToMany(mappedBy = "idMunicipioPv")
+    @ToString.Exclude
     private List<puntoVenta> municipioPuntoVenta;
 
     @OneToMany(mappedBy = "idMunicipioProv")
+    @ToString.Exclude
     private List<proveedor> municipioProveedor;
 
 

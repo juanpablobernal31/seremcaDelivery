@@ -35,21 +35,21 @@ public class envio implements Serializable {
     @ManyToOne
     private estado estadosEnvio;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String telefonoEnvio;
 
-
-    private LocalDate fechaEnvio;
+    @Column(nullable = false)
+    private String fechaEnvio;
 
 
     @Builder
-    public envio(String direccionEnvio, puntoVenta idPuntoOrigenEnvio, int idVentaEnvio, persona idPersonaEnvio, estado estadosEnvio, String telefonoEnvio, LocalDate fechaEnvio) {
+    public envio(String direccionEnvio, puntoVenta idPuntoOrigenEnvio, int idVentaEnvio, persona idPersonaEnvio, estado estadosEnvio, String telefonoEnvio, String fechaEnvio) {
         this.direccionEnvio = direccionEnvio;
         this.idPuntoOrigenEnvio = idPuntoOrigenEnvio;
         this.idVentaEnvio = idVentaEnvio;
         this.idPersonaEnvio = idPersonaEnvio;
         this.estadosEnvio = estadosEnvio;
         this.telefonoEnvio = telefonoEnvio;
-        this.fechaEnvio = LocalDate.now();
+        this.fechaEnvio = fechaEnvio;
     }
 }

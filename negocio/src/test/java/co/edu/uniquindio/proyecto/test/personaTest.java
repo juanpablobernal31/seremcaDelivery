@@ -2,13 +2,13 @@ package co.edu.uniquindio.proyecto.test;
 
 
 import co.edu.uniquindio.proyecto.entidades.persona;
-import co.edu.uniquindio.proyecto.entidades.rol;
 import co.edu.uniquindio.proyecto.repo.personaRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,8 +22,7 @@ public class personaTest {
 
     @Test
     public void registrarPersona(){
-        rol rolPersona = new rol("admin");
-        persona persona = new persona(1234, rolPersona, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
+        persona persona = new persona(1234, 1, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
         persona guardado = personaRepo.save(persona);
 
 
@@ -31,49 +30,41 @@ public class personaTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     void eliminarPersona(){
-        rol rolPersona = new rol("admin");
-        persona persona = new persona(1234, rolPersona, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
-        persona guardado = personaRepo.save(persona);
+        persona buscado = personaRepo.findById(4).orElse(null);
 
-        personaRepo.delete(guardado);
+
+        personaRepo.delete(buscado);
 //Por último, verificamos que si haya quedado borrado
-        Optional <persona> buscado = personaRepo.findById(1234);
-        Assertions.assertNull(buscado.orElse(null));
+        Optional <persona> eliminado = personaRepo.findById(4);
+        Assertions.assertNull(personaRepo.findById(4).orElse(null));
 
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public  void actualizarPersona(){
-        rol rolPersona = new rol("admin");
-        persona persona = new persona(1234, rolPersona, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
-        persona guardado = personaRepo.save(persona);
 
-        guardado.setNombrePersona("pedro");
-//Con save guardamos el registro modificado
-        personaRepo.save(guardado);
 //Por último, verificamos que si haya quedado actualizado
-        persona buscado = personaRepo.findById(1234).orElse(null);
-        Assertions.assertEquals("pedro", buscado.getNombrePersona());
+        persona buscado = personaRepo.findById(3).orElse(null);
+        Assertions.assertEquals("pablo", buscado.getNombrePersona());
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void obtenerPersona(){
-        rol rolPersona = new rol("admin");
-        persona persona = new persona(1234, rolPersona, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
-        persona guardado = personaRepo.save(persona);
-
-        System.out.println(guardado.toString());
-
-        Assertions.assertEquals("juan", guardado.getNombrePersona());
+        persona buscado = personaRepo.findById(1).orElse(null);
+        Assertions.assertEquals("juan", buscado.getNombrePersona());
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void listar(){
 
         //Obtenemos la lista de todos los usuarios
         List<persona> lista = personaRepo.findAll();
         //Imprimimos la lista
-        System.out.println(lista);
+        lista.forEach(System.out::println);
     }
 }

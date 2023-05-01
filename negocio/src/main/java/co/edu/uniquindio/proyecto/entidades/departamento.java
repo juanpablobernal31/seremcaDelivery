@@ -22,10 +22,16 @@ public class departamento implements Serializable {
     private String nombreDepartamento;
 
     @OneToMany(mappedBy = "idDepartMunicipio")
+    @ToString.Exclude
     private List<municipio> municipios;
 
     @OneToMany(mappedBy = "departamentoProveedor")
+    @ToString.Exclude
     private List<proveedor> proveedores;
+
+    @OneToMany(mappedBy = "idDepartametoPV")
+    @ToString.Exclude
+    private List<puntoVenta> puntosVenta;
 
 
     @Builder

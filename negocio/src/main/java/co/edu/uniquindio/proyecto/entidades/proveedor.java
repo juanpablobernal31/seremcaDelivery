@@ -50,12 +50,13 @@ public class proveedor implements Serializable {
     private departamento departamentoProveedor;
 
     @OneToMany(mappedBy = "idProveProducto")
+    @ToString.Exclude
     private List<producto> productoProveedorList;
 
 
 
     @Builder
-    public proveedor(int promedioProveedor, int ultimaCosecha, int numeroCosecha, co.edu.uniquindio.proyecto.entidades.esAsociacion esAsociacion, int nivelMar, String nombreProveedor, String cedulaNit, municipio idMunicipioProv, departamento departamentoProveedor) {
+    public proveedor(int promedioProveedor, int ultimaCosecha, int numeroCosecha, esAsociacion esAsociacion, int nivelMar, String nombreProveedor, String cedulaNit, municipio idMunicipioProv, departamento departamentoProveedor) {
         this.promedioProveedor = promedioProveedor;
         this.ultimaCosecha = ultimaCosecha;
         this.numeroCosecha = numeroCosecha;
