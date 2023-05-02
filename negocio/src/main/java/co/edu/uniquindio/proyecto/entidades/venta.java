@@ -1,9 +1,10 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.PositiveOrZero;
+
 import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

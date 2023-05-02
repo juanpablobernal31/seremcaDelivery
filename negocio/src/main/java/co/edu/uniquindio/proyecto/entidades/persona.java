@@ -1,8 +1,12 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
 

@@ -1,1 +1,3 @@
 rootProject.name = 'seremcaDelivery'
+include 'negocio'
+include 'web'
