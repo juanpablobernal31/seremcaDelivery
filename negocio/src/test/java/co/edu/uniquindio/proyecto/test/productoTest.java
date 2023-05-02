@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.test;
 
+import co.edu.uniquindio.proyecto.DTO.productoDTO;
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repo.productoRepo;
 import org.junit.jupiter.api.Assertions;
@@ -90,6 +91,13 @@ public class productoTest {
     @Sql("classpath:dataset.sql")
     public void productosFechaMaduracion(){
         List<producto> productos = productoRepo.findByFechaMaduracion("15/04/2023");
+        productos.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void productosDTO(){
+        List<productoDTO> productos = productoRepo.listaDTO("pulpa de mora");
         productos.forEach(System.out::println);
     }
 }
