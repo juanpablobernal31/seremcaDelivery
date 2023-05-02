@@ -1,0 +1,29 @@
+plugins {
+    id 'org.joinfaces' version '4.7.3'
+    id 'org.springframework.boot' version '2.6.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'com.seremcaDelivery'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/release' }
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+
+    implementation 'org.joinfaces:jsf-spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.primefaces:primefaces:11.0.0'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.32'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
