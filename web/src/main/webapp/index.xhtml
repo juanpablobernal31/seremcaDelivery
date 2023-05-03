@@ -1,19 +1,94 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Website</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3d2645;
+            color: white;
+            padding: 10px;
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>seremca Inicio</title>
-</h:head>
-<h:body>
-    <h1>Hola Mundo</h1>
-    <h2>#{inicioBean.mensaje}</h2>
-</h:body>
+        .header h1 {
+            margin: 0;
+            font-family: 'Poppins Medium', sans-serif;
+            font-size: 24px;
+        }
+
+        .header .logo {
+            width: 80px;
+            margin-right: 20px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0077be;
+            padding: 10px;
+        }
+
+        .nav-bar .nav-link {
+            color: white;
+            font-family: 'Poppins Medium', sans-serif;
+            font-size: 16px;
+            margin: 0 20px;
+            text-decoration: none;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .hero-section .logo {
+            width: 500px;
+        }
+
+
+        .hero-section .decorative-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+<p:divider fullPage="true">
+    <p:divider position="north" size="70">
+        <div class="header">
+            <div class="hero-section">
+
+            </div>
+            <h1>SEREMCA DELIVERY</h1>
+            <div class="button-bar">
+                <p:button value="Login" outcome="login" styleClass="button"/>
+                <p:button value="Registro" outcome="registro" styleClass="button"/>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="#">Contact Us</a>
+        </div>
+    </p:divider>
+    <p:divider position="center">
+        <div class="hero-section">
+            <img class="logo" src="large-logo.png" alt="Large Logo"/>
+            <div class="decorative-image"></div>
+        </div>
+    </p:divider>
+</p:divider>
+</body>
 </html>

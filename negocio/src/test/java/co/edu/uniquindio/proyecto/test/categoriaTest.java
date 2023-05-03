@@ -1,8 +1,8 @@
 package co.edu.uniquindio.proyecto.test;
 
 
-import co.edu.uniquindio.proyecto.entidades.categoria;
-import co.edu.uniquindio.proyecto.repo.categoriaRepo;
+import co.edu.uniquindio.proyecto.entidades.Categoria;
+import co.edu.uniquindio.proyecto.repo.CategoriaRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class categoriaTest {
     @Autowired
-    private categoriaRepo categoriaRepo;
+    private CategoriaRepo categoriaRepo;
 
     @Test
     public void crearCategoria(){
-             categoria categoria = new categoria("mora rama", "canastilla de mora rama", 4, "kilo");
-             categoria guardado = categoriaRepo.save(categoria);
+             Categoria categoria = new Categoria("mora rama", "canastilla de mora rama", 4, "kilo");
+             Categoria guardado = categoriaRepo.save(categoria);
 
              Assertions.assertEquals("mora rama", guardado.getNombreCategoria());
     }
@@ -30,11 +30,11 @@ public class categoriaTest {
     @Test
     @Sql("classpath:dataset.sql")
     void eliminarCategoria(){
-       categoria buscado = categoriaRepo.findById(1).orElse(null);
+       Categoria buscado = categoriaRepo.findById(1).orElse(null);
 
         categoriaRepo.delete(buscado);
 //Por último, verificamos que si haya quedado borrado
-        Optional <categoria> eliminado = categoriaRepo.findById(1);
+        Optional <Categoria> eliminado = categoriaRepo.findById(1);
         Assertions.assertNull(categoriaRepo.findById(1).orElse(null));
 
     }
@@ -42,14 +42,14 @@ public class categoriaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerCategoria(){
-        categoria buscado = categoriaRepo.findById(1).orElse(null);
+        Categoria buscado = categoriaRepo.findById(1).orElse(null);
         Assertions.assertEquals("arreglada", buscado.getNombreCategoria());
     }
 
     @Test
     @Sql("classpath:dataset.sql")
     public void listarCategoria(){
-        List<categoria> lista = categoriaRepo.findAll();
+        List<Categoria> lista = categoriaRepo.findAll();
         //Imprimimos la lista
         lista.forEach(System.out::println);
     }
@@ -57,20 +57,20 @@ public class categoriaTest {
      @Test
     @Sql("classpath:dataset.sql")
     public void obtenerPordiasMaduracion(){
-        categoria categoria = categoriaRepo.obtener(6);
+        Categoria categoria = categoriaRepo.obtener(6);
          System.out.println(categoria);
      }
      @Test
     @Sql("classpath:dataset.sql")
     public void listarPorDiasMaduaracion(){
-        List<categoria> lista = categoriaRepo.listarDiasMaduracion(6);
+        List<Categoria> lista = categoriaRepo.listarDiasMaduracion(6);
         lista.forEach(System.out::println);
      }
 
      @Test
     @Sql("classpath:dataset.sql")
     public void nombreCategoria(){
-        categoria categoria = categoriaRepo.countcategoriaBynombreCategoria("Rama");
+        Categoria categoria = categoriaRepo.countcategoriaBynombreCategoria("Rama");
          System.out.println(categoria.toString());
         Assertions.assertEquals("rama", categoria.getNombreCategoria());
      }

@@ -1,7 +1,7 @@
 package co.edu.uniquindio.proyecto.test;
 
-import co.edu.uniquindio.proyecto.entidades.departamento;
-import co.edu.uniquindio.proyecto.repo.departamentoRepo;
+import co.edu.uniquindio.proyecto.entidades.Departamento;
+import co.edu.uniquindio.proyecto.repo.DepartamentoRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ import java.util.Optional;
 public class departamentoTest {
 
     @Autowired
-    private departamentoRepo departamentoRepo;
+    private DepartamentoRepo departamentoRepo;
 
     @Test
     public void crearDepartamento(){
 
-        departamento guardado = new departamento("Quindio");
+        Departamento guardado = new Departamento("Quindio");
         Assertions.assertEquals("Quindio", guardado.getNombreDepartamento());
 
     }
@@ -30,11 +30,11 @@ public class departamentoTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void elimindarDepartameno(){
-        departamento buscado = departamentoRepo.findById(1).orElse(null);
+        Departamento buscado = departamentoRepo.findById(1).orElse(null);
 
         departamentoRepo.delete(buscado);
 
-        Optional <departamento> eliminado = departamentoRepo.findById(1);
+        Optional <Departamento> eliminado = departamentoRepo.findById(1);
         Assertions.assertNull(departamentoRepo.findById(1).orElse(null));
 
     }
@@ -43,14 +43,14 @@ public class departamentoTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerDepartamento(){
-        departamento buscado = departamentoRepo.findById(1).orElse(null);
+        Departamento buscado = departamentoRepo.findById(1).orElse(null);
         Assertions.assertEquals("Quindio", buscado.getNombreDepartamento());
     }
 
     @Test
     @Sql("classpath:dataset.sql")
     public void listarDepartametos(){
-        List<departamento> lista = departamentoRepo.findAll();
+        List<Departamento> lista = departamentoRepo.findAll();
         //Imprimimos la lista
         lista.forEach(System.out::println);
     }
@@ -58,7 +58,7 @@ public class departamentoTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void productosFecahCosecha(){
-        departamento departamento = departamentoRepo.findByNombreDepartamento("Quindio");
+        Departamento departamento = departamentoRepo.findByNombreDepartamento("Quindio");
         System.out.println(departamento.toString());
     }
 }

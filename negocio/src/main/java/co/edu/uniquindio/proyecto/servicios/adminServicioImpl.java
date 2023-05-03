@@ -2,8 +2,6 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.*;
 import co.edu.uniquindio.proyecto.repo.*;
-import org.aspectj.apache.bcel.classfile.Module;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +12,13 @@ class adminServicioImpl implements adminServicio{
 
 
 
-   private proveedorRepo proveedorRepo;
-   private categoriaRepo categoriaRepo;
-   private departamentoRepo departamentoRepo;
-   private municipioRepo municipioRepo;
-   private  productoRepo productoRepo;
+   private ProveedorRepo proveedorRepo;
+   private CategoriaRepo categoriaRepo;
+   private DepartamentoRepo departamentoRepo;
+   private MunicipioRepo municipioRepo;
+   private ProductoRepo productoRepo;
 
-    public adminServicioImpl(co.edu.uniquindio.proyecto.repo.proveedorRepo proveedorRepo, co.edu.uniquindio.proyecto.repo.categoriaRepo categoriaRepo, co.edu.uniquindio.proyecto.repo.departamentoRepo departamentoRepo, co.edu.uniquindio.proyecto.repo.municipioRepo municipioRepo, co.edu.uniquindio.proyecto.repo.productoRepo productoRepo) {
+    public adminServicioImpl(ProveedorRepo proveedorRepo, CategoriaRepo categoriaRepo, DepartamentoRepo departamentoRepo, MunicipioRepo municipioRepo, ProductoRepo productoRepo) {
         this.proveedorRepo = proveedorRepo;
         this.categoriaRepo = categoriaRepo;
         this.departamentoRepo = departamentoRepo;
@@ -29,7 +27,7 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public proveedor crearProveedor(proveedor proveedor) throws Exception{
+    public Proveedor crearProveedor(Proveedor proveedor) throws Exception{
         boolean bandera = findProveedorById(proveedor.getIdProveedor());
         if (bandera){
             throw new RuntimeException("El proveedor ya existe.");
@@ -42,7 +40,7 @@ class adminServicioImpl implements adminServicio{
 
     @Override
     public void eliminarProveedor(int idProveedor) throws Exception {
-        Optional<proveedor> buscado = proveedorRepo.findById(idProveedor);
+        Optional<Proveedor> buscado = proveedorRepo.findById(idProveedor);
         if(buscado.isEmpty()){
             throw new RuntimeException("Proveedor no existe.");
         }
@@ -51,8 +49,8 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public proveedor actualizarProveedor(proveedor proveedor) throws Exception {
-        Optional<proveedor> buscado = proveedorRepo.findById(proveedor.getIdProveedor());
+    public Proveedor actualizarProveedor(Proveedor proveedor) throws Exception {
+        Optional<Proveedor> buscado = proveedorRepo.findById(proveedor.getIdProveedor());
         if(buscado.isEmpty()){
             throw new Exception("proveedor no existente");
         }
@@ -60,13 +58,13 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public List<proveedor> listarProveedor() {
+    public List<Proveedor> listarProveedor() {
         return proveedorRepo.findAll();
     }
 
     @Override
-    public proveedor obtenerProveedor(int id) throws Exception {
-        proveedor proveedor =proveedorRepo.findById(id).orElse(null);
+    public Proveedor obtenerProveedor(int id) throws Exception {
+        Proveedor proveedor =proveedorRepo.findById(id).orElse(null);
 
         if (proveedor ==null){
             throw  new Exception("datos incorrectos");
@@ -75,7 +73,7 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public categoria crearCategoria(categoria categoria) throws Exception {
+    public Categoria crearCategoria(Categoria categoria) throws Exception {
         boolean bandera = findCategoriaById(categoria.getIdCategoria());
         if (bandera){
             throw new RuntimeException("La categoria ya existe.");
@@ -87,7 +85,7 @@ class adminServicioImpl implements adminServicio{
     private boolean findCategoriaById(int id){ return categoriaRepo.findById(id).orElse(null)!=null;}
     @Override
     public void eliminarCategoria(int idCategoria) throws Exception{
-        Optional<categoria> buscado = categoriaRepo.findById(idCategoria);
+        Optional<Categoria> buscado = categoriaRepo.findById(idCategoria);
         if(buscado.isEmpty()){
             throw new RuntimeException("La categoria no existe.");
         }
@@ -96,8 +94,8 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public categoria actualizarCategoria(categoria categoria) throws Exception{
-        Optional<categoria> buscado = categoriaRepo.findById(categoria.getIdCategoria());
+    public Categoria actualizarCategoria(Categoria categoria) throws Exception{
+        Optional<Categoria> buscado = categoriaRepo.findById(categoria.getIdCategoria());
         if(buscado.isEmpty()){
             throw new Exception("categoria no existente");
         }
@@ -105,13 +103,13 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public List<categoria> listarCategoria() {
+    public List<Categoria> listarCategoria() {
         return categoriaRepo.findAll();
     }
 
     @Override
-    public categoria obtenerCategoria(int id) throws Exception {
-        categoria categoria =categoriaRepo.findById(id).orElse(null);
+    public Categoria obtenerCategoria(int id) throws Exception {
+        Categoria categoria =categoriaRepo.findById(id).orElse(null);
 
         if (categoria ==null){
             throw  new Exception("datos incorrectos");
@@ -120,7 +118,7 @@ class adminServicioImpl implements adminServicio{
 
 
     @Override
-    public departamento crearDepartamento(departamento departamento) throws Exception{
+    public Departamento crearDepartamento(Departamento departamento) throws Exception{
         boolean bandera = findDepartamentoById(departamento.getIdDepartamento());
         if (bandera){
             throw new RuntimeException("El departamento ya existe.");
@@ -132,7 +130,7 @@ class adminServicioImpl implements adminServicio{
     private boolean findDepartamentoById(int id){ return departamentoRepo.findById(id).orElse(null)!=null;}
     @Override
     public void eliminarDepartamento(int idDepartamento) throws Exception{
-        Optional<departamento> buscado = departamentoRepo.findById(idDepartamento);
+        Optional<Departamento> buscado = departamentoRepo.findById(idDepartamento);
         if(buscado.isEmpty()){
             throw new RuntimeException("El departamento no existe.");
         }
@@ -141,8 +139,8 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public departamento actualizarDepartamento(departamento departamento) throws Exception{
-        Optional<departamento> buscado = departamentoRepo.findById(departamento.getIdDepartamento());
+    public Departamento actualizarDepartamento(Departamento departamento) throws Exception{
+        Optional<Departamento> buscado = departamentoRepo.findById(departamento.getIdDepartamento());
         if(buscado.isEmpty()){
             throw new Exception("El departamento no existente");
         }
@@ -150,13 +148,13 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public List<departamento> listarDepartamento() {
+    public List<Departamento> listarDepartamento() {
         return departamentoRepo.findAll();
     }
 
     @Override
-    public departamento obtenerDepartamento(int id) throws Exception {
-        departamento departamento =departamentoRepo.findById(id).orElse(null);
+    public Departamento obtenerDepartamento(int id) throws Exception {
+        Departamento departamento =departamentoRepo.findById(id).orElse(null);
 
         if (departamento ==null){
             throw  new Exception("datos incorrectos");
@@ -164,7 +162,7 @@ class adminServicioImpl implements adminServicio{
         return departamento;    }
 
     @Override
-    public municipio crearMunicipio(municipio municipio) throws Exception{
+    public Municipio crearMunicipio(Municipio municipio) throws Exception{
         boolean bandera = findMunicipioById(municipio.getIdMunicipio());
         if (bandera){
             throw new RuntimeException("El municipio ya existe.");
@@ -177,7 +175,7 @@ class adminServicioImpl implements adminServicio{
     private boolean findMunicipioById(int id){ return municipioRepo.findById(id).orElse(null)!=null;}
     @Override
     public void eliminarMunicio(int idMunicipio) throws Exception{
-        Optional<municipio> buscado = municipioRepo.findById(idMunicipio);
+        Optional<Municipio> buscado = municipioRepo.findById(idMunicipio);
         if(buscado.isEmpty()){
             throw new RuntimeException("El municipio no existe.");
         }
@@ -186,8 +184,8 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public municipio actualizarMunicipio(municipio municipio) throws Exception{
-        Optional<municipio> buscado = municipioRepo.findById(municipio.getIdMunicipio());
+    public Municipio actualizarMunicipio(Municipio municipio) throws Exception{
+        Optional<Municipio> buscado = municipioRepo.findById(municipio.getIdMunicipio());
         if(buscado.isEmpty()){
             throw new Exception("El minucipio no existente");
         }
@@ -195,13 +193,13 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public List<municipio> listarMunicipio() {
+    public List<Municipio> listarMunicipio() {
         return municipioRepo.findAll();
     }
 
     @Override
-    public municipio obtenerMunicipio(int id) throws Exception {
-        municipio municipio =municipioRepo.findById(id).orElse(null);
+    public Municipio obtenerMunicipio(int id) throws Exception {
+        Municipio municipio =municipioRepo.findById(id).orElse(null);
 
         if (municipio ==null){
             throw  new Exception("datos incorrectos");
@@ -211,7 +209,7 @@ class adminServicioImpl implements adminServicio{
 
 
     @Override
-    public producto crearProducto(producto producto) throws Exception{
+    public Producto crearProducto(Producto producto) throws Exception{
         boolean bandera = findProductoById(producto.getIdProducto());
         if (bandera){
             throw new RuntimeException("El producto ya existe.");
@@ -225,7 +223,7 @@ class adminServicioImpl implements adminServicio{
     @Override
     public void eliminarProducto(int idProducto) throws Exception{
 
-        Optional<producto> buscado = productoRepo.findById(idProducto);
+        Optional<Producto> buscado = productoRepo.findById(idProducto);
         if(buscado.isEmpty()){
             throw new RuntimeException("El producto no existe.");
         }
@@ -234,8 +232,8 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public producto actualizarProducto(producto producto) throws Exception{
-        Optional<producto> buscado = productoRepo.findById(producto.getCantidadProducto());
+    public Producto actualizarProducto(Producto producto) throws Exception{
+        Optional<Producto> buscado = productoRepo.findById(producto.getCantidadProducto());
         if(buscado.isEmpty()){
             throw new Exception("El producto no existente");
         }
@@ -243,13 +241,13 @@ class adminServicioImpl implements adminServicio{
     }
 
     @Override
-    public List<producto> listarProducto() {
+    public List<Producto> listarProducto() {
         return productoRepo.findAll();
     }
 
     @Override
-    public producto obtenerProducto(int id) throws Exception {
-        producto producto=productoRepo.findById(id).orElse(null);
+    public Producto obtenerProducto(int id) throws Exception {
+        Producto producto=productoRepo.findById(id).orElse(null);
 
         if (producto ==null){
             throw  new Exception("datos incorrectos");

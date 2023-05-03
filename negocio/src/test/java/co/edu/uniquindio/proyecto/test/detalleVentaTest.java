@@ -2,7 +2,7 @@ package co.edu.uniquindio.proyecto.test;
 
 
 import co.edu.uniquindio.proyecto.entidades.*;
-import co.edu.uniquindio.proyecto.repo.detalleVentaRepo;
+import co.edu.uniquindio.proyecto.repo.DetalleVentaRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +17,18 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class detalleVentaTest {
     @Autowired
-    private detalleVentaRepo detalleVentaRepo;
+    private DetalleVentaRepo detalleVentaRepo;
 
 
     @Test
     public void generarDetalleVenta(){
-        persona persona = new persona(1, 1, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
-        venta venta = new venta(persona, "12/04/2023", 60000);
-        categoria categoria = new categoria("mora", "mora", 4, "kilo");
-        proveedor proveedor = new proveedor();
-        producto producto = new producto(100, 100, 6000, 10000, "mora", "mora", "12/04/2023", "20/04/2023", proveedor, categoria);
+        Persona persona = new Persona(1, "juan", "calle 123 #45-7", "calarca", "12345", "quindio");
+        Venta venta = new Venta(persona, "12/04/2023", 60000);
+        Categoria categoria = new Categoria("mora", "mora", 4, "kilo");
+        Proveedor proveedor = new Proveedor();
+        Producto producto = new Producto(100, 100, 6000, 10000, "mora", "mora", "12/04/2023", "20/04/2023", proveedor, categoria);
 
-        detalleVenta guardado = new detalleVenta(venta, producto, 60000, 0, 1 );
+        DetalleVenta guardado = new DetalleVenta(venta, producto, 60000, 0, 1 );
 
         Assertions.assertEquals(60000, guardado.getPrecioTotal());
 
@@ -37,18 +37,18 @@ public class detalleVentaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void eliminarDetalleVenta(){
-        detalleVenta buscado = detalleVentaRepo.findById(1).orElse(null);
+        DetalleVenta buscado = detalleVentaRepo.findById(1).orElse(null);
 
         detalleVentaRepo.delete(buscado);
 
-        Optional <detalleVenta> eliminado = detalleVentaRepo.findById(1);
+        Optional <DetalleVenta> eliminado = detalleVentaRepo.findById(1);
         Assertions.assertNull(detalleVentaRepo.findById(1).orElse(null));
     }
 
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerDetalleVenta(){
-        detalleVenta buscado = detalleVentaRepo.findById(1).orElse(null);
+        DetalleVenta buscado = detalleVentaRepo.findById(1).orElse(null);
 
         Assertions.assertEquals(60000, buscado.getPrecioTotal());
     }
@@ -56,7 +56,7 @@ public class detalleVentaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public  void listarDetalleVenta(){
-        List<detalleVenta> lista = detalleVentaRepo.findAll();
+        List<DetalleVenta> lista = detalleVentaRepo.findAll();
     lista.forEach(System.out::println);
     }
 }
