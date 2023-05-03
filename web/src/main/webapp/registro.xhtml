@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> nuevo registro</title>
+</h:head>
+<h:body>
+    <p:panel header="REGISTRAR USUARIO.">
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+
+                <p:outputLabel for="cedula" value="Numero de cedula:" />
+                <p:inputText id = "cedula" value="#{registroBean.persona.idPersona}" converterMessage="Solo los numeros de tu cedula, sin puntos." />
+                <p:message for="cedula"/>
+
+                <p:outputLabel for="nombre" value="Nombre completo:" />
+                <p:inputText id="nombre" value="#{registroBean.persona.nombrePersona}" required="true"/>
+                <p:message for ="nombre"/>
+
+                <p:outputLabel for="ciudad" value="Ciudad de residencia:" />
+                <p:inputText id="ciudad" value="#{registroBean.persona.ciudadPersona}" required="true"/>
+                <p:message for="ciudad"/>
+
+
+                <p:outputLabel for="direccion" value="Direccion de residencia:" />
+                <p:inputText id="direccion" value="#{registroBean.persona.direccionPersona}" required="true"/>
+                <p:message for="direccion"/>
+
+
+                <p:outputLabel for="telefono" value="Telefono celular:" />
+                <p:inputText id="telefono" value="#{registroBean.persona.telefonoPersona}" required="true"/>
+                <p:message for="telefono"/>
+
+                <p:outputLabel for="clave" value="Contraseña:" />
+                <p:password id="clave" value="#{registroBean.persona.contrasena}" required="true"/>
+                <p:message for="clave"/>
+
+                <p:outputLabel for="confirmacion" value="Confirmar contraseña:" />
+                <p:password id="confirmacion" value="#{registroBean.confirmacion}" required="true"/>
+                <p:message for="confirmacion"/>
+
+            </h:panelGrid>
+            <p:commandButton action="#{registroBean.registrarPersona()}" value="Registrar"
+                             update="@form" />
+            <p:growl for="mensajeBean" showDetail="true"/>
+        </h:form>
+    </p:panel>
+
+</h:body>
+</html>
