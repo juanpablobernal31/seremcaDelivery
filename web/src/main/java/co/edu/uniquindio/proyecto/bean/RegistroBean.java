@@ -2,13 +2,12 @@ package co.edu.uniquindio.proyecto.bean;
 
 
 import co.edu.uniquindio.proyecto.entidades.Persona;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import co.edu.uniquindio.proyecto.servicios.personaServicio;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
@@ -57,6 +56,8 @@ public class RegistroBean implements Serializable {
                 System.out.println(persona.toString());
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta","Usuario registrado!!!");
                 FacesContext.getCurrentInstance().addMessage("mensajeBean", fm);
+                ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+                ec.redirect(ec.getRequestContextPath() + "/listarProductos.xhtml");
             }else{
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta","Contraseñas no coinciden");
                 FacesContext.getCurrentInstance().addMessage("mensajeBean", fm);
