@@ -242,7 +242,9 @@ class adminServicioImpl implements adminServicio{
 
     @Override
     public List<Producto> listarProducto() {
-        return productoRepo.findAll();
+        List<Producto> productoList = productoRepo.findAll();
+        System.out.println(productoList.toString());
+        return productoList;
     }
 
     @Override

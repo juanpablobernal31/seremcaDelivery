@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyecto.bean;
 
-import co.edu.uniquindio.proyecto.entidades.Persona;
+
 import co.edu.uniquindio.proyecto.entidades.Producto;
 import co.edu.uniquindio.proyecto.servicios.adminServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -29,6 +28,7 @@ public class listarProductosBean  implements Serializable {
 
     public listarProductosBean(adminServicio adminServico) {
         this.adminServico = adminServico;
+        productos = adminServico.listarProducto();
     }
 
     @PostConstruct
@@ -57,7 +57,7 @@ public class listarProductosBean  implements Serializable {
         this.productos.add(this.producto);
     }
 
-    public void listarPtoductos(){
+    public void listarProductos(){
         try {
             productos = adminServico.listarProducto();
 

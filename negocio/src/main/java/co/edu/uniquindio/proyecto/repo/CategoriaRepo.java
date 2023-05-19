@@ -10,12 +10,10 @@ import java.util.List;
 @Repository
 public interface CategoriaRepo extends JpaRepository <Categoria, Integer> {
 
-    @Query("select c from Categoria c where c.diasMaduracion = ?1")
-    Categoria obtener(int diasMaduracion);
 
     @Query("select c from Categoria c where c.diasMaduracion = :diasMaduaracion")
     List<Categoria> listarDiasMaduracion(int diasMaduaracion);
 
-    @Query("select  c from Categoria c where c.nombreCategoria =:nombre")
-    Categoria countcategoriaBynombreCategoria(String nombre);
+    @Query("select c from Categoria c where c.nombreCategoria =:nombre")
+    Categoria findByName(String nombre);
 }
