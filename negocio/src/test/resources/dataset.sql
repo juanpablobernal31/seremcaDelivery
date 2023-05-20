@@ -1,20 +1,20 @@
-insert into persona values (1, "calarca", "12345", "casa #12", "juan", 0, "123456");
-insert into persona values (2, "calarca", "1234", "casa #12", "carlos", 0, "123456");
-insert into persona values (3, "calarca", "123", "casa #12", "pablo", 1, "123456");
-insert into persona values (4, "calarca", "12", "casa #12", "juancho", 0, "123456");
+insert into persona values (1, "Calarca", "12345", "casa #12", "juan", 0, "123456");
+insert into persona values (2, "Calarca", "1234", "casa #12", "carlos", 0, "123456");
+insert into persona values (3, "Calarca", "123", "casa #12", "pablo", 1, "123456");
+insert into persona values (4, "Calarca", "12", "casa #12", "juancho", 0, "123456");
 
-insert into departamento values (1, "quindio");
-insert into departamento values (2, "caldas");
-insert into departamento values (3, "risaralda");
-insert into departamento values (4, "huila");
+insert into departamento values (1, "Quindio");
+insert into departamento values (2, "Caldas");
+insert into departamento values (3, "Risaralda");
+insert into departamento values (4, "Huila");
 
 
-insert into municipio values (1, "calarca", 1);
-insert into municipio values (2, "manizales", 2);
-insert into municipio values (3, "pereira", 3);
-insert into municipio values (4, "neiva", 4);
-insert into municipio values (5, "gigante", 4);
-insert into municipio values (6, "armenia", 1);
+insert into municipio values (1, "Calarca", 1);
+insert into municipio values (2, "Manizales", 2);
+insert into municipio values (3, "Pereira", 3);
+insert into municipio values (4, "Neiva", 4);
+insert into municipio values (5, "Gigante", 4);
+insert into municipio values (6, "Armenia", 1);
 
 
 insert into  proveedor values (1, "12345", "SI", 1600, "asoMoras", 2, 2500, 3000, 4, 4);

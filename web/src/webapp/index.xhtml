@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>seremca</title>
+    <meta charset="UTF-8"/>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FFFFFF;
+            height: 80px;
+            padding: 0 50px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-left: 50px;
+        }
+
+        .menu li:first-child {
+            margin-left: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #3d2645;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .menu a:hover {
+            color: #d2b6db;
+        }
+
+        .login,
+        .register {
+            background-color: #3d2645;
+            color: white;
+            font-family: 'Poppins Medium', sans-serif;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .login a,
+        .register a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .login a:hover,
+        .register:hover {
+            color: #d2b6db;
+        }
+
+        .menu,
+        .buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .buttons div {
+            margin-left: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #F1F1F1;
+        }
+        #content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 50px;
+        }
+        #content img {
+            width: auto;
+            height: 50%;
+            margin-right: 50px;
+
+        }
+        #content p {
+            font-size: 24px;
+            font-weight: 500;
+                  }
+
+    </style>
+
+</head>
+<body>
+<header class="header">
+    <img src="https://i.imgur.com/vlOuzD9.png" alt="Logo" />
+    <ul class="menu">
+        <li><a href="index.xhtml">Inicio</a></li>
+        <li><a href="nosotros.xhtml">Nosotros</a></li>
+        <li><a href="contactos.xhtml">Contacto</a></li>
+    </ul>
+    <div class="buttons">
+        <div class="login"><a href="login.xhtml">Iniciar sesión</a></div>
+        <div class="register"><a href="registro.xhtml">Registrarme</a> </div>
+    </div>
+</header>
+
+<div id="content">
+    <img src="https://i.imgur.com/28aA4kL.png" alt="Imagen" />
+    <p>Este es el contenido de mi página web.</p>
+        
+</div>
+</body>
+</html>

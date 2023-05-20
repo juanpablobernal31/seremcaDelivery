@@ -60,8 +60,7 @@ public class ProveedorTest {
         Departamento departamento;
         departamento = departamentoRepo.findById(1).orElse(null);
         Proveedor proveedores = proveedorRepo.findByDepartamentoProveedor(departamento);
-
-        System.out.println(proveedores.toString());
+        System.out.println(proveedores);
     }
 
     @Test

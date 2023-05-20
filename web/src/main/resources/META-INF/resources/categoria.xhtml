@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title> nuevo registro</title>
+</h:head>
+
+<style type="">
+    .formulario {
+        border: 1px solid;
+        margin: 0 auto;
+        width: 600px;
+    }
+    .formulario-container {
+        display: flex;
+    }
+    .formulario-container__caja {
+        margin: 0 30px 0 5px;
+        width: 50px;
+    }
+    .formulario-container:nth-child(2) {
+        margin-top: 10px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #FFFFFF;
+        height: 80px;
+        padding: 0 50px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu {
+        list-style-type: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        margin-left: 50px;
+    }
+
+    .menu li:first-child {
+        margin-left: 0;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #3d2645;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .menu a:hover {
+        color: #d2b6db;
+    }
+
+    .login,
+    .register {
+        background-color: #3d2645;
+        color: white;
+        font-family: 'Poppins Medium', sans-serif;
+        font-size: 14px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .login a,
+    .register a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .login a:hover,
+    .register:hover {
+        color: #d2b6db;
+    }
+
+    .menu,
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .buttons div {
+        margin-left: 10px;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #F1F1F1;
+    }
+    #content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 50px;
+    }
+    #content img {
+        width: auto;
+        height: 50%;
+        margin-right: 50px;
+
+    }
+    #content p {
+        font-size: 24px;
+        font-weight: 500;
+
+    }
+
+</style>
+
+<h:body>
+    <h:head class="header">
+        <img src="https://i.imgur.com/vlOuzD9.png" alt="Logo" />
+        <ul class="menu">
+            <li><a href="listarProductos.xhtml">Productos</a></li>
+            <li><a href="proveedores.xhtml">Proveedores</a></li>
+            <li><a href="contactos.xhtml">Ventas</a></li>
+        </ul>
+    </h:head>
+
+    <p:panel header="LISTA DE CATEGORIAS.">
+        <div class="card">
+            <h:form id="form">
+
+                <p:dataTable  value="#{categoriaBean.categorias}" var="categoria">
+
+                    <p:column headerText="Codigo Categoria" displayPriority="0">
+                        <p:outputLabel  value="#{categoria.idCategoria}"/>
+                    </p:column>
+
+                    <p:column headerText="Nombre Categoria" displayPriority="1">
+                        <p:outputLabel  value="#{categoria.nombreCategoria}"/>
+                    </p:column>
+
+                    <p:column headerText="Descripción" displayPriority="2">
+                        <p:outputLabel  value="#{categoria.descripcionCategoria}"/>
+                    </p:column>
+
+                    <p:column headerText="Dias maduracion" displayPriority="3">
+                        <p:outputLabel  value="#{categoria.diasMaduracion}"/>
+                    </p:column>
+
+                    <p:column headerText="Unidad de medida" displayPriority="4">
+                        <p:outputLabel  value="#{categoria.unidadMedida}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+    </p:panel>
+
+</h:body>
+</html>

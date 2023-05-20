@@ -15,6 +15,18 @@ repositories {
     maven { url 'https://repo.spring.io/milestone' }
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs  "src/main/resources", "src/main/webapp"
+        }
+    }
+}
+
+tasks.withType(Copy).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.WARN
+}
+
 dependencies {
 
     implementation 'org.joinfaces:jsf-spring-boot-starter'
@@ -22,6 +34,7 @@ dependencies {
     implementation 'org.primefaces:primefaces:11.0.0'
     implementation 'org.projectlombok:lombok:1.18.26'
     implementation project(':negocio')
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     runtimeOnly 'mysql:mysql-connector-java:8.0.32'
 
 }
