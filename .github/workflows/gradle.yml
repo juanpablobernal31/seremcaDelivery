@@ -18,9 +18,6 @@ jobs:
     steps:
     - name: Apagando servicio general
       run: sudo systemctl stop svapp
-      
-    - name: Apagando servicio de MySQL
-      run: sudo systemctl stop mysql
     
     - uses: actions/checkout@v3
       with:
