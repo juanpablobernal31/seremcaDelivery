@@ -17,13 +17,18 @@ class adminServicioImpl implements adminServicio{
    private DepartamentoRepo departamentoRepo;
    private MunicipioRepo municipioRepo;
    private ProductoRepo productoRepo;
+   private PuntoVentaRepo puntoVentaRepo;
+   private VentaRepo ventaRepo;
 
-    public adminServicioImpl(ProveedorRepo proveedorRepo, CategoriaRepo categoriaRepo, DepartamentoRepo departamentoRepo, MunicipioRepo municipioRepo, ProductoRepo productoRepo) {
+    public adminServicioImpl(VentaRepo ventaRepo, PuntoVentaRepo puntoVentaRepo, ProveedorRepo proveedorRepo, CategoriaRepo categoriaRepo, DepartamentoRepo departamentoRepo, MunicipioRepo municipioRepo, ProductoRepo productoRepo) {
         this.proveedorRepo = proveedorRepo;
         this.categoriaRepo = categoriaRepo;
         this.departamentoRepo = departamentoRepo;
         this.municipioRepo = municipioRepo;
         this.productoRepo = productoRepo;
+        this.puntoVentaRepo = puntoVentaRepo;
+        this.ventaRepo = ventaRepo;
+
     }
 
     @Override
@@ -256,4 +261,109 @@ class adminServicioImpl implements adminServicio{
         }
         return producto;
     }
+
+    private boolean findPuntoVentaById(int id){ return puntoVentaRepo.findById(id).orElse(null)!=null;}
+    @Override
+    public PuntoVenta crearPuntoVenta(PuntoVenta puntoVenta) throws Exception {
+        boolean bandera = findPuntoVentaById(puntoVenta.getIdPuntoVenta());
+        if (bandera){
+            throw new RuntimeException("El producto ya existe.");
+        }
+
+        return puntoVentaRepo.save(puntoVenta);
+    }
+
+    @Override
+    public void eliminarPuntoVenta(int idPuntoVenta) throws Exception {
+
+        Optional<PuntoVenta> buscado = puntoVentaRepo.findById(idPuntoVenta);
+        if(buscado.isEmpty()){
+            throw new RuntimeException("El producto no existe.");
+        }
+
+        puntoVentaRepo.delete(buscado.get());
+
+    }
+
+    @Override
+    public PuntoVenta actualizarPuntoVenta(PuntoVenta puntoVenta) throws Exception {
+        Optional<PuntoVenta> buscado = puntoVentaRepo.findById(puntoVenta.getIdPuntoVenta());
+        if(buscado.isEmpty()){
+            throw new Exception("El producto no existente");
+        }
+        return puntoVentaRepo.save(puntoVenta);
+    }
+
+    @Override
+    public List<PuntoVenta> listarPuntoVenta() {
+
+        List<PuntoVenta> puntoVentaList = puntoVentaRepo.findAll();
+        System.out.println(puntoVentaList.toString());
+        return puntoVentaList;
+
+    }
+
+    @Override
+    public PuntoVenta obtenerPuntoVenta(int idPuntoVenta) throws Exception {
+
+        PuntoVenta puntoVenta = puntoVentaRepo.findById(idPuntoVenta).orElse(null);
+
+        if (puntoVenta ==null){
+            throw  new Exception("datos incorrectos");
+        }
+        return puntoVenta;
+
+    }
+
+
+    private boolean findVentaById(int id){ return ventaRepo.findById(id).orElse(null)!=null;}
+    @Override
+    public Venta crearVenta(Venta venta) throws Exception {
+        boolean bandera = findVentaById(venta.getIdVenta());
+        if (bandera){
+            throw new RuntimeException("El producto ya existe.");
+        }
+
+        return ventaRepo.save(venta);
+    }
+
+    @Override
+    public void eliminarVenta(int idVenta) throws Exception {
+
+        Optional<Venta> buscado = ventaRepo.findById(idVenta);
+        if(buscado.isEmpty()){
+            throw new RuntimeException("El producto no existe.");
+        }
+
+        ventaRepo.delete(buscado.get());
+
+    }
+
+    @Override
+    public Venta actualizarVenta(Venta venta) throws Exception {
+        Optional<Venta> buscado = ventaRepo.findById(venta.getIdVenta());
+        if(buscado.isEmpty()){
+            throw new Exception("El producto no existente");
+        }
+        return ventaRepo.save(venta);    }
+
+    @Override
+    public List<Venta> listarVenta() {
+
+        List<Venta> ventaList = ventaRepo.findAll();
+        System.out.println(ventaList.toString());
+        return ventaList;
+
+    }
+
+    @Override
+    public Venta obtenerVenta(int idVenta) throws Exception {
+        Venta venta = ventaRepo.findById(idVenta).orElse(null);
+        if (venta ==null){
+            throw  new Exception("datos incorrectos");
+        }
+        return venta;
+    }
+
+
 }

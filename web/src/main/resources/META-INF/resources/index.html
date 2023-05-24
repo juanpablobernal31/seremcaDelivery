@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Seremca Delivery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css\style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+				<div class="p-4">
+		  		<h1><a href="index.html" class="logo">Seremca <span>Vista Administrador</span></a></h1>
+	        <ul class="list-unstyled components mb-5">
+	          <li class="active">
+	            <a href="#" class="sidebar-link productos"><span class="fa fa-home mr-3"></span> Productos</a>
+	          </li>
+	          <li>
+				<a href="#" class="sidebar-link categorias"><span class="fa fa-user mr-3"></span> Categorias</a>
+	          </li>
+	          <li>
+				<a href="#" class="sidebar-link proveedores"><span class="fa fa-briefcase mr-3"></span> Proveedores</a>
+	          </li>
+	          <li>
+				<a href="#" class="sidebar-link puntos-venta"><span class="fa fa-sticky-note mr-3"></span> Puntos de venta</a>
+	          </li>
+	          <li>
+				<a href="#" class="sidebar-link pedidos"><span class="fa fa-suitcase mr-3"></span> Pedidos</a>
+	          </li >
+	          <li class="bottom-link">
+				<a href="/" class=" cerrar-sesion"><span class="fa fa-paper-plane mr-3"></span> Cerrar sesión</a>
+			  </li>
+	        </ul>
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+		<div id="content" class="p-4 p-md-5 pt-5">
+			<div id="Productos">
+				<h2 class="mb-4">Productos</h2>
+				<div> 
+        		<iframe src="listarProductos.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+				<!-- Contenido de la sección "Productos" -->
+			</div>
+			<div id="Categorias">
+				<h2 class="mb-4">Categorias</h2>
+
+				<div> 
+        		<iframe src="categoria.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+			</div>
+			<div id="Proveedores">
+				<!-- Contenido de la sección "proveedores" -->
+				<h2 class="mb-4">Proveedores</h2>
+				<div> 
+        		<iframe src="proveedores.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+			</div>
+			<div id="puntosdeventa">
+				<!-- Contenido de la sección "Puntos de venta" -->
+				<h2 class="mb-4">Puntos de venta</h2>
+        		<div id="createButtonContainer">
+					<button class="create-button" id="createPuntoVenta-btn">
+						<img src="./tablaRecursos/crear.png" alt="Crear" />
+						Crear
+					</button>
+				</div>
+				<div> 
+        		<iframe src="tablaPuntosVenta.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+			</div>
+			<div id="Pedidos">
+				<!-- Contenido de la sección "Pedidos" -->
+				<h2 class="mb-4">Pedidos</h2>
+				<div> 
+        		<iframe src="ventas.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+			</div>
+			<div id="CerrarSesion">
+				<!-- Contenido de la sección "Cerrar Sesión" -->
+				<div>
+					<iframe src="inicio.xhtml" style="width: 100%; height: 100%; border: none;"></iframe>
+				</div>
+			</div>
+			
+			<!-- Modal de producto -->
+			<div id="modal" class="modal">
+				<div class="modal-content">
+				<span id= "close-product" class="close">&times;</span>
+				<form id="product-form"></form>
+				<iframe src="formularioCrearProducto.html" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+			
+			<!-- Modal de categoría -->
+			<div id="categoriemodal" class="modal">
+				<div class="modal-content">
+				<span id= "close-categorie" class="close">&times;</span>
+				<form id="categorie-form"></form>
+				<iframe src="formularioCrearCategoria.html" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+
+			<!-- Modal de categoría -->
+			<div id="proveedormodal" class="modal">
+				<div class="modal-content">
+				<span id= "close-proveedor" class="close">&times;</span>
+				<form id="proveedor-form"></form>
+				<iframe src="formularioCrearProveedor.html" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+
+			<!-- Modal de categoría -->
+			<div id="puntoventamodal" class="modal">
+				<div class="modal-content">
+				<span id= "close-puntoVenta" class="close">&times;</span>
+				<form id="puntoVenta-form"></form>
+				<iframe src="formularioCrearPuntoVenta.html" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+
+			<!-- Modal de categoría -->
+			<div id="ventamodal" class="modal">
+				<div class="modal-content">
+				<span id= "close-venta" class="close">&times;</span>
+				<form id="venta-form"></form>
+				<iframe src="formularioCrearVenta.html" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/botonCrearProducto.js"></script>
+		<script src="js/botonCrearCategoria.js"></script>
+		<script src="js/botonCrearProveedor.js"></script>
+		<script src="js/botonCrearPuntoVenta.js"></script>
+		<script src="js/botonCrearVenta.js"></script>
+
+	<script>
+		// Obtener todos los enlaces del Sidebar
+		const sidebarLinks = document.querySelectorAll('.sidebar-link');
+	  
+		// Obtener todos los contenidos del Page Content
+		const pageContents = document.querySelectorAll('#content > div');
+	  
+		// Función para mostrar el contenido correspondiente al enlace seleccionado
+		function mostrarContenido(index) {
+		  // Ocultar todos los contenidos del Page Content
+		  pageContents.forEach(content => {
+			content.style.display = 'none';
+		  });
+	  
+		  // Mostrar el contenido correspondiente al índice proporcionado
+		  if (pageContents[index]) {
+			pageContents[index].style.display = 'block';
+		  } else {
+			// Si el índice está fuera de rango, mostrar un contenido vacío
+			const contenidoVacio = document.createElement('div');
+			contenidoVacio.textContent = 'Contenido vacío';
+			document.getElementById('content').appendChild(contenidoVacio);
+		  }
+		}
+	  
+		// Iterar sobre cada enlace y agregar un evento de clic
+		sidebarLinks.forEach((link, index) => {
+		  link.addEventListener('click', function(event) {
+			event.preventDefault(); // Evitar el comportamiento de enlace predeterminado
+			mostrarContenido(index);
+		  });
+		});
+	  
+		// Mostrar el primer contenido al cargar la página si ninguno está seleccionado
+		mostrarContenido(0);
+	  </script>
+  </body>
+</html>

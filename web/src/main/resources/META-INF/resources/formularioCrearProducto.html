@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./formularioRecursos/formularioCrear.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de creación de Producto</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h3>Formulario de creación de Producto</h3>
+  <form id="product-form">
+    <div class="form-columns">
+      <div>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" required>
+      </div>
+  
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      </div>
+    </div>
+  
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" required></textarea>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" required>
+          <!-- Opciones de categorías -->
+          <option value="categoria1">Categoría 1</option>
+          <option value="categoria2">Categoría 2</option>
+          <option value="categoria3">Categoría 3</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="proveedor">Proveedor:</label>
+        <select id="proveedor" required>
+          <!-- Opciones de proveedores -->
+          <option value="proveedor1">Proveedor 1</option>
+          <option value="proveedor2">Proveedor 2</option>
+          <option value="proveedor3">Proveedor 3</option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="fecha-cosecha">Fecha de cosecha:</label>
+        <input type="date" id="fecha-cosecha" required>
+      </div>
+  
+      <div>
+        <label for="fecha-maduracion">Fecha de maduración:</label>
+        <input type="date" id="fecha-maduracion" required>
+      </div>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" required>
+      </div>
+  
+      <div>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" required>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" id="save-btn">Guardar</button>
+      <button type="button" id="cancel-btn">Cancelar</button>
+    </div>
+  </form>
+</body>
+</html>

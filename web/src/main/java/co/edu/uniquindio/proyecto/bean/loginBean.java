@@ -48,7 +48,7 @@ public class loginBean implements Serializable {
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Login Exitoso!");
                 FacesContext.getCurrentInstance().addMessage("mensajeBean", fm);
                 ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                ec.redirect(ec.getRequestContextPath() + "/listarProductos.xhtml");
+                ec.redirect(ec.getRequestContextPath() + "/index.html");
 
 
             } else {

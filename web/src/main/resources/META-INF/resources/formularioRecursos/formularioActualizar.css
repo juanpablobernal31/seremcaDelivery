@@ -1,0 +1,133 @@
+h3{
+  color:#6c7ae0;
+  text-align: center;
+  font-family: sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form-container {
+  border: 2px solid #6c7ae0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 500px; /* Establece el ancho deseado */
+  height: 450px; /* Establece la altura deseada */
+  align-content: center;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6c7ae0;
+    font-family: sans-serif;
+
+  }
+
+  input{
+    margin-bottom: 10px;
+    height: 25px;
+    width: 100%;
+    border-radius: 5px;
+    border-color: #6c7ae0;
+    border-width: 1px;
+    padding-left: 5px;
+  }
+
+  select {
+    margin-bottom: 10px;
+    height: 29px;
+    border-radius: 5px;
+    border-color: #6c7ae0;
+    padding-left: 5px;
+    color:black;
+  
+    
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 104%;
+  }
+
+  .form-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: left;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #save-btn{
+    background-color: #6c7ae0;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  #cancel-btn {
+    background-color: white;
+    color: #6c7ae0;
+    border-radius: 5px;
+    border-color: #6c7ae0;
+    border-width: 1px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  #save-btn:hover{
+    background-color: #151e63;
+  }
+
+  #cancel-btn:hover{
+    background-color: #dad8d8;
+    color: #151e63;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: rgb(163, 163, 163);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  textarea {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-color: #6c7ae0;
+  padding: 5px;
+  width: 99%;
+}
+
+
+#fecha-maduracion {
+    padding-left: 5px;
+    color: black;
+}
+#fecha-cosecha {
+    padding-left: 5px;
+    color:black;
+}
+
+#ultima-producción{
+  height: 27px;
+  width: 100%;
+}

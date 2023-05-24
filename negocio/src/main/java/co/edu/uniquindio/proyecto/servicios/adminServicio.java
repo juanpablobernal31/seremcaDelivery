@@ -49,6 +49,22 @@ public interface adminServicio {
     Producto obtenerProducto(int id) throws Exception;
 
 
-    //faltan para proximas entregas las de envio, estado, puntoVenta, detalleVenta  y venta
+    //PUNTO_VENTA
+    PuntoVenta crearPuntoVenta(PuntoVenta puntoVenta) throws Exception;
+    void eliminarPuntoVenta(int idPuntoVenta) throws Exception;
+    PuntoVenta actualizarPuntoVenta(PuntoVenta puntoVenta) throws Exception;
+    List<PuntoVenta> listarPuntoVenta();
+    PuntoVenta obtenerPuntoVenta(int idPuntoVenta) throws Exception;
+
+
+    //VENTA
+    Venta crearVenta(Venta venta) throws Exception;
+    void eliminarVenta(int idVenta) throws Exception;
+    Venta actualizarVenta(Venta venta) throws Exception;
+    List<Venta> listarVenta();
+    Venta obtenerVenta(int idVenta) throws Exception;
+
+
+    //faltan para proximas entregas las de envio, estado, detalleVenta  y venta
 
 }

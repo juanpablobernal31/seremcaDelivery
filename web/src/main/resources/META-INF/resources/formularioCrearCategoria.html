@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./formularioRecursos/formularioCrear.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de creación de Categoria</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h3>Formulario de creación de Categoria</h3>
+  <form id="categorie-form">
+    <div class="form-columns">
+      <div>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" required>
+      </div>
+  
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      </div>
+    </div>
+  
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" required></textarea>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="diasMaduracion">Días de maduración:</label>
+        <input type="text" id="diasMaduracion" required>
+      </div>
+  
+      <div>
+        <label for="unidadMedida">Unidad de medida:</label>
+        <input type="text" id="unidadMedida" required>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" id="save-btn">Guardar</button>
+      <button type="button" id="cancel-btn">Cancelar</button>
+    </div>
+  </form>
+</body>
+</html>

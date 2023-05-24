@@ -2,10 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui" >
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -128,45 +126,81 @@
 </style>
 
 <h:body>
-    <h:head class="header">
-        <img src="https://i.imgur.com/vlOuzD9.png" alt="Logo" />
-        <ul class="menu">
-            <li><a href="listarProductos.xhtml">Productos</a></li>
-            <li><a href="proveedores.xhtml">Proveedores</a></li>
-            <li><a href="contactos.xhtml">Ventas</a></li>
-        </ul>
-    </h:head>
+        <h:form id="form">
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Agregar" icon="pi pi-plus" onclick="PF('CrearCategoria').show()"
+                                     styleClass="ui-button-success" style="margin-right: .3rem"  update="form:tablaCategorias">
+                    </p:commandButton>
 
-    <p:panel header="LISTA DE CATEGORIAS.">
-        <div class="card">
-            <h:form id="form">
+                    <p:commandButton value="Borrar" icon="pi pi-trash"  styleClass="ui-button-danger"
+                                     action="#{categoriaBean.borrarCategoria()}" style="margin-right: .3rem"
+                                     update="form:tablaCategorias">
 
-                <p:dataTable  value="#{categoriaBean.categorias}" var="categoria">
+                    </p:commandButton>
 
-                    <p:column headerText="Codigo Categoria" displayPriority="0">
-                        <p:outputLabel  value="#{categoria.idCategoria}"/>
-                    </p:column>
+                </p:toolbarGroup>
 
-                    <p:column headerText="Nombre Categoria" displayPriority="1">
-                        <p:outputLabel  value="#{categoria.nombreCategoria}"/>
-                    </p:column>
 
-                    <p:column headerText="Descripción" displayPriority="2">
-                        <p:outputLabel  value="#{categoria.descripcionCategoria}"/>
-                    </p:column>
+            </p:toolbar>
 
-                    <p:column headerText="Dias maduracion" displayPriority="3">
-                        <p:outputLabel  value="#{categoria.diasMaduracion}"/>
-                    </p:column>
+            <p:dataTable id="tablaCategorias" value="#{categoriaBean.categorias}" var="categoria" paginator="true" rows="4"
+                         rowKey="#{categoriaBean.categoria.idCategoria}"
+                         paginatorPosition="bottom" rowSelectMode="add"
+                         selection="#{categoriaBean.categoriasSelecionadas}" >
 
-                    <p:column headerText="Unidad de medida" displayPriority="4">
-                        <p:outputLabel  value="#{categoria.unidadMedida}"/>
-                    </p:column>
+                <p:column selectionMode="multiple" exportable="false"/>
 
-                </p:dataTable>
-            </h:form>
-        </div>
-    </p:panel>
+                <p:column headerText="Nombre Categoria" displayPriority="1">
+                    <p:outputLabel  value="#{categoria.nombreCategoria}"/>
+                </p:column>
 
+                <p:column headerText="Descripción" displayPriority="2">
+                    <p:outputLabel  value="#{categoria.descripcionCategoria}"/>
+                </p:column>
+
+                <p:column headerText="Dias maduracion" displayPriority="3">
+                    <p:outputLabel  value="#{categoria.diasMaduracion}"/>
+                </p:column>
+
+                <p:column headerText="Unidad de medida" displayPriority="4">
+                    <p:outputLabel  value="#{categoria.unidadMedida}"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+    <p:dialog widgetVar="CrearCategoria" modal="true" header="Crear categoria.">
+        <h:form>
+            <p:scrollPanel mode="native" style="width:400px;height:400px">
+                <h:panelGrid columns="3" cellpadding="5" >
+
+                    <p:outputLabel for="nombre_categoria" value="nombre de la categoria: "/>
+                    <p:inputText id="nombre_categoria" value="#{categoriaBean.categoria.nombreCategoria}" required="true"/>
+                    <p:message for="nombre_categoria"/>
+
+                    <p:outputLabel for="descripcion_categoria" value="descripción de la categoria: "/>
+                    <p:inputText id="descripcion_categoria" value="#{categoriaBean.categoria.descripcionCategoria}" />
+                    <p:message for="descripcion_categoria"/>
+
+                    <p:outputLabel for="dias_maduracion" value="dias de maduracion: "/>
+                    <p:inputNumber id="dias_maduracion" value="#{categoriaBean.categoria.diasMaduracion}" required="true"/>
+                    <p:message for="dias_maduracion"/>
+
+                    <p:outputLabel for="unidad_medida" value="unidad de medida: "/>
+                    <p:inputText id="unidad_medida" value="#{categoriaBean.categoria.unidadMedida}" required="true"/>
+                    <p:message for="unidad_medida"/>
+
+
+
+                </h:panelGrid>
+
+            </p:scrollPanel>
+
+            <p:commandButton value="Crear" action="#{categoriaBean.agregarCategoria}" icon="pi pi-plus-circle"  update="form:tablaCategorias"/>
+            <p:growl for="mensaje_bean" showDetail="true"/>
+
+        </h:form>
+    </p:dialog>
 </h:body>
 </html>

@@ -3,12 +3,12 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title> nuevo registro</title>
+    <title>Prpductos</title>
 </h:head>
 
 <style type="">
@@ -126,49 +126,120 @@
 </style>
 
 <h:body>
-    <h:head class="header">
-        <img src="https://i.imgur.com/vlOuzD9.png" alt="Logo" />
-        <ul class="menu">
-            <li><a href="categoria.xhtml">Categorias</a></li>
-            <li><a href="proveedores.xhtml">Proveedores</a></li>
-            <li><a href="ventas.xhtml">Ventas</a></li>
-        </ul>
-    </h:head>
 
-    <p:panel header="LISTA DE PRODUCTOS.">
-         <div class="card">
-                    <h:form id="form">
+    <div>
+        <h:form id="form">
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Agregar" icon="pi pi-plus" onclick="PF('CrearProducto').show()"
+                                     styleClass="ui-button-success" style="margin-right: .3rem"  update="form:tablaProductos">
+                    </p:commandButton>
 
-                        <p:dataTable  value="#{listarProductosBean.productos}" var="producto">
+                    <p:commandButton value="Borrar" icon="pi pi-trash"  styleClass="ui-button-danger"
+                                     action="#{listarProductosBean.borrarProducto()}" style="margin-right: .3rem"
+                                    update="form:tablaProductos">
 
-                            <p:column headerText="Codigo Producto" displayPriority="0">
-                                <p:outputLabel  value="#{producto.idProducto}"/>
-                            </p:column>
+                    </p:commandButton>
 
-                            <p:column headerText="Nombre Producto" displayPriority="1">
-                                <p:outputLabel  value="#{producto.nombreProducto}"/>
-                            </p:column>
+                </p:toolbarGroup>
 
-                            <p:column headerText="Descripcion" displayPriority="2">
-                                <p:outputLabel  value="#{producto.descripcionProducto}"/>
-                            </p:column>
 
-                            <p:column headerText="Precio de Venta" displayPriority="4">
-                                <p:outputLabel  value="#{producto.precioVentaProducto}"/>
-                            </p:column>
+            </p:toolbar>
 
-                            <p:column headerText="Fecha Cosecha" displayPriority="5">
-                                <p:outputLabel  value="#{producto.fechaCosecha}"/>
-                            </p:column>
+            <p:dataTable id="tablaProductos" value="#{listarProductosBean.productos}" var="producto" paginator="true" rows="4"
+                         rowKey="#{listarProductosBean.producto.idProducto}"
+                         paginatorPosition="bottom" rowSelectMode="add"
+                         selection="#{listarProductosBean.productosSelecionados}" >
 
-                            <p:column headerText="Fecha maduracion" displayPriority="6">
-                                <p:outputLabel  value="#{producto.fechaMaduracion}"/>
-                            </p:column>
 
-                        </p:dataTable>
-                    </h:form>
-                </div>
-    </p:panel>
+                <p:column selectionMode="multiple" exportable="false"/>
+
+                <p:column headerText="Nombre Producto" displayPriority="1">
+                    <p:outputLabel  value="#{producto.nombreProducto}"/>
+                </p:column>
+
+                <p:column headerText="Descripcion" displayPriority="2">
+                    <p:outputLabel  value="#{producto.descripcionProducto}"/>
+                </p:column>
+
+                <p:column headerText="Precio de Venta" displayPriority="4">
+                    <p:outputLabel  value="#{producto.precioVentaProducto}"/>
+                </p:column>
+
+                <p:column headerText="Fecha Cosecha" displayPriority="5">
+                    <p:outputLabel  value="#{producto.fechaCosecha}"/>
+                </p:column>
+
+                <p:column headerText="Fecha maduracion" displayPriority="6">
+                    <p:outputLabel  value="#{producto.fechaMaduracion}"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+    </div>
+
 
 </h:body>
+
+<p:dialog widgetVar="CrearProducto" modal="true" header="Crear producto.">
+    <h:form>
+        <p:scrollPanel mode="native" style="width:400px;height:400px">
+            <h:panelGrid columns="3" cellpadding="5" >
+
+                <p:outputLabel for="nombre_producto" value="nombre del producto: "/>
+                <p:inputText id="nombre_producto" value="#{listarProductosBean.producto.nombreProducto}" required="true"/>
+                <p:message for="nombre_producto"/>
+
+                <p:outputLabel for="descripcion_producto" value="descripción del producto: "/>
+                <p:inputText id="descripcion_producto" value="#{listarProductosBean.producto.descripcionProducto}" />
+                <p:message for="descripcion_producto"/>
+
+                <p:outputLabel for="disponible" value="disponible: "/>
+                <p:inputNumber id="disponible" value="#{listarProductosBean.producto.disponible}" required="true"/>
+                <p:message for="disponible"/>
+
+                <p:outputLabel for="cantidad_producto" value="cantidad: "/>
+                <p:inputNumber id="cantidad_producto" value="#{listarProductosBean.producto.cantidadProducto}" required="true"/>
+                <p:message for="cantidad_producto"/>
+
+                <p:outputLabel for="fecha_cosecha" value="fecha cosecha: "/>
+                <p:inputText id="fecha_cosecha" value="#{listarProductosBean.producto.fechaCosecha}" required="true"/>
+                <p:message for="fecha_cosecha"/>
+
+                <p:outputLabel for="fecha_maduracion" value="fecha maduración: "/>
+                <p:inputText id="fecha_maduracion" value="#{listarProductosBean.producto.fechaMaduracion}" required="true"/>
+                <p:message for="fecha_maduracion"/>
+
+                <p:outputLabel for="precio_produccion" value="precio producción: "/>
+                <p:inputNumber id="precio_produccion" value="#{listarProductosBean.producto.precioProduccion}" required="true"/>
+                <p:message for="precio_produccion"/>
+
+                <p:outputLabel for="precio_venta_producto" value="precio venta: "/>
+                <p:inputNumber id="precio_venta_producto" value="#{listarProductosBean.producto.precioVentaProducto}" required="true"/>
+                <p:message for="precio_venta_producto"/>
+
+                <p:outputLabel for="id_cat_producto_id_categoria" value="Catgoria: "/>
+                <p:selectOneMenu id="id_cat_producto_id_categoria" value="#{listarProductosBean.producto.idCatProducto}" converter="#{categoriaConverte}">
+                    <f:selectItems value="#{listarProductosBean.categorias}" var="categoria" itemLabel="#{categoria.nombreCategoria}" itemValue="#{categoria}"/>
+                </p:selectOneMenu>
+                <p:message for="id_cat_producto_id_categoria" />
+
+                <p:outputLabel for="id_prove_producto_id_proveedor" value="Proveedor: " />
+                <p:selectOneMenu id="id_prove_producto_id_proveedor" value="#{listarProductosBean.producto.idProveProducto}"  converter="#{proveedorConverte}">
+                    <f:selectItems value="#{listarProductosBean.proveedores}" var="proveedor" itemLabel="#{proveedor.nombreProveedor}" itemValue="#{proveedor}"/>
+                </p:selectOneMenu>
+                <p:message for="id_prove_producto_id_proveedor"/>
+
+            </h:panelGrid>
+
+        </p:scrollPanel>
+
+      <p:commandButton value="Crear producto" action="#{listarProductosBean.agregarProducto()}" icon="pi pi-plus-circle"  update="form:tablaProductos"/>
+      <p:growl for="mensaje_bean" showDetail="true"/>
+
+    </h:form>
+</p:dialog>
+
+
 </html>

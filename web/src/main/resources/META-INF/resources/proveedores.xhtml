@@ -3,14 +3,13 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title> nuevo registro</title>
+    <title> Proveedores</title>
 </h:head>
-
 <style type="">
     .formulario {
         border: 1px solid;
@@ -126,22 +125,34 @@
 </style>
 
 <h:body>
-    <h:head class="header">
-        <img src="https://i.imgur.com/vlOuzD9.png" alt="Logo" />
-        <ul class="menu">
-            <li><a href="listarProductos.xhtml">Productos</a></li>
-            <li><a href="categoria.xhtml">Categorias</a></li>
-            <li><a href="contactos.xhtml">Ventas</a></li>
-        </ul>
-    </h:head>
 
-    <p:panel header="LISTA DE PROVEEDORES.">
-        <div class="card">
-            <h:form id="form">
+    <p:panel >
+        <h:form id="form">
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Agregar" icon="pi pi-plus" onclick="PF('CrearProveedor').show()"
+                                     styleClass="ui-button-success" style="margin-right: .3rem"  update="form:tablaProveedor">
+                    </p:commandButton>
 
-                <p:dataTable  value="#{proveedoresBean.proveedores}" var="proveedor">
+                    <p:commandButton value="Borrar" icon="pi pi-trash"  styleClass="ui-button-danger"
+                                     action="#{proveedoresBean.borrarProveedor()}" style="margin-right: .3rem"
+                                     update="form:tablaProveedor">
 
-                    <p:column headerText="Codigo proveedor" displayPriority="0">
+                    </p:commandButton>
+
+                </p:toolbarGroup>
+
+
+            </p:toolbar>
+
+            <p:dataTable id="tablaProveedor" value="#{proveedoresBean.proveedores}" var="proveedor" paginator="true" rows="4"
+                         rowKey="#{proveedoresBean.proveedor.idProveedor}"
+                         paginatorPosition="bottom" rowSelectMode="add"
+                         selection="#{proveedoresBean.proveedoresSeleccionados}" >
+
+                    <p:column selectionMode="multiple" exportable="false"/>
+
+                    <p:column headerText="cedula/NIT proveedor" displayPriority="0">
                         <p:outputLabel  value="#{proveedor.cedulaNit}"/>
                     </p:column>
 
@@ -173,8 +184,66 @@
 
                 </p:dataTable>
             </h:form>
-        </div>
     </p:panel>
 
 </h:body>
+
+<p:dialog widgetVar="CrearProveedor" modal="true" header="Crear proveedor.">
+    <h:form>
+        <p:scrollPanel mode="native" style="width:400px;height:400px">
+            <h:panelGrid columns="3" cellpadding="5" >
+
+                <p:outputLabel for="nombre_proveedor" value="nombre del proveedor: "/>
+                <p:inputText id="nombre_proveedor" value="#{proveedoresBean.proveedor.nombreProveedor}" required="true"/>
+                <p:message for="nombre_proveedor"/>
+
+                <p:outputLabel for="cedula_nit" value="cc o NIT del producto: "/>
+                <p:inputText id="cedula_nit" value="#{proveedoresBean.proveedor.cedulaNit}" />
+                <p:message for="cedula_nit"/>
+
+                <p:outputLabel for="nivel_mar" value="nivel del mar: "/>
+                <p:inputNumber id="nivel_mar" value="#{proveedoresBean.proveedor.nivelMar}" required="true"/>
+                <p:message for="nivel_mar"/>
+
+                <p:outputLabel for="numero_cosecha" value="numero de cosechas: "/>
+                <p:inputNumber id="numero_cosecha" value="#{proveedoresBean.proveedor.numeroCosecha}" required="true"/>
+                <p:message for="numero_cosecha"/>
+
+                <p:outputLabel for="promedio_proveedor" value="promedio de cosechas: "/>
+                <p:inputNumber id="promedio_proveedor" value="#{proveedoresBean.proveedor.promedioProveedor}" required="true"/>
+                <p:message for="promedio_proveedor"/>
+
+
+                <p:outputLabel for="ultima_cosecha" value="ultima cosecha: "/>
+                <p:inputNumber id="ultima_cosecha" value="#{proveedoresBean.proveedor.ultimaCosecha}" required="true"/>
+                <p:message for="ultima_cosecha"/>
+
+
+                <p:outputLabel for="departamento_proveedor_id_departamento" value="Departamento: "/>
+                <p:selectOneMenu id="departamento_proveedor_id_departamento" value="#{proveedoresBean.proveedor.departamentoProveedor}" converter="#{departamentoConver}">
+                    <f:selectItems value="#{proveedoresBean.departamentos}" var="departamento" itemLabel="#{departamento.nombreDepartamento}" itemValue="#{departamento}"/>
+                </p:selectOneMenu>
+                <p:message for="departamento_proveedor_id_departamento" />
+
+                <p:outputLabel for="id_municipio_prov_id_municipio" value="Municipio: " />
+                <p:selectOneMenu id="id_municipio_prov_id_municipio" value="#{proveedoresBean.proveedor.idMunicipioProv}"  converter="#{municipioConverte}">
+                    <f:selectItems value="#{proveedoresBean.municipios}" var="municipio" itemLabel="#{municipio.nombremunicipio}" itemValue="#{municipio}"/>
+                </p:selectOneMenu>
+                <p:message for="id_municipio_prov_id_municipio"/>
+
+                <p:outputLabel for="es_asociacion" value="es asociacion: " />
+                <p:selectOneMenu id="es_asociacion" value="#{proveedoresBean.proveedor.esAsociacion}">
+                    <f:selectItems value="#{proveedoresBean.asociacions}" var="esAsociacion" itemLabel="#{esAsociacion.toString()}" itemValue="#{esAsociacion}"/>
+                </p:selectOneMenu>
+                <p:message for="es_asociacion" />
+
+            </h:panelGrid>
+
+        </p:scrollPanel>
+
+        <p:commandButton value="Crear proveedor" action="#{proveedoresBean.agregarProveedor()}" icon="pi pi-plus-circle"  update="form:tablaProveedor"/>
+        <p:growl for="mensaje_bean" showDetail="true"/>
+
+    </h:form>
+</p:dialog>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./formularioRecursos/formularioCrear.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de creación de Proveedores</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h3>Formulario de creación de Proveedores</h3>
+  <form id="proveedor-form">
+    <div class="form-columns">
+      <div>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" required>
+      </div>
+  
+      <div>
+        
+        <label for="cedula/nit">Cedula/NIT:</label>
+        <input id="cedula/nit" required></input>
+      </div>
+    </div>
+    
+    <div class="form-columns">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+    </div>
+      <div>
+        <label for="asociacion">Asociación:</label>
+        <select id="asociacion" required>
+          <!-- Opciones de categorías -->
+          <option value="categoria1">Si</option>
+          <option value="categoria2">No</option>
+        </select>
+      </div>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="promedio">Promedio de Producción:</label>
+        <input type="number" id="promedio" required>
+      </div>
+      <div>
+        <label for="ultima-producción">Fecha de última producción:</label>
+        <input type="date" id="ultima-producción" required>
+      </div>
+    </div>
+  
+    <div class="form-columns">
+      <div>
+        <label for="numero-cosechas">Número de cosechas:</label>
+        <input type="number" id="numero-cosechas" required>
+      </div>
+      <div>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" required>
+      </div>
+    </div>
+
+    <div class="form-columns">
+      <div>
+        <label for="ciudad">Ciudad:</label>
+        <select id="ciudad" required>
+          <!-- Opciones de categorías -->
+          <option value="categoria1">Armenia</option>
+          <option value="categoria2">Gigante</option>
+          <option value="categoria2">Neiva</option>
+        </select>
+      </div>
+      <div>
+        <label for="departamento">Departamento:</label>
+        <select id="departamento" required>
+          <!-- Opciones de categorías -->
+          <option value="categoria1">Quindio</option>
+          <option value="categoria2">Huila</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" id="save-btn">Guardar</button>
+      <button type="button" id="cancel-btn">Cancelar</button>
+    </div>
+  </form>
+</body>
+</html>
