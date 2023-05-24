@@ -57,7 +57,7 @@ public class RegistroBean implements Serializable {
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta","Usuario registrado!!!");
                 FacesContext.getCurrentInstance().addMessage("mensajeBean", fm);
                 ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-                ec.redirect(ec.getRequestContextPath() + "/listarProductos.xhtml");
+                ec.redirect(ec.getRequestContextPath() + "/index.html");
             }else{
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta","Contraseñas no coinciden");
                 FacesContext.getCurrentInstance().addMessage("mensajeBean", fm);
